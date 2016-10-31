@@ -1,0 +1,2636 @@
+
+%
+% This file was prepared using 
+% AMS-LaTeX2e <1996/06/01>
+% Document Class: amsart 1995/02/23 v1.2b
+% Authors:
+% Title: 
+% Date:
+%
+
+\documentclass[12pt]{amsart}
+%\usepackage{amssymb}
+\setlength{\textwidth}{17.5cm}\oddsidemargin=-1cm\evensidemargin=-1cm
+\setlength{\textheight}{20cm}
+\begin{document}
+\numberwithin{equation}{section}
+
+\def\1#1{\overline{#1}}
+\def\2#1{\widetilde{#1}}
+\def\3#1{\widehat{#1}}
+\def\4#1{\mathbb{#1}}
+\def\5#1{\frak{#1}}
+\def\6#1{{\mathcal{#1}}}
+
+\def\C{{\4C}}
+\def\R{{\4R}}
+\def\N{{\4N}}
+\def\Z{{\4Z}}
+
+\title[]{A geometric approach to Catlin's boundary systems}
+\author[D. Zaitsev]{Dmitri Zaitsev}
+\address{D. Zaitsev: School of Mathematics, Trinity College Dublin, Dublin 2, Ireland}
+\email{zaitsev@maths.tcd.ie}
+%\subjclass{}
+
+\maketitle
+\tableofcontents
+
+
+\def\Label#1{\label{#1}{\bf (#1)}~}
+%\def\Label#1{\label{#1}}
+
+
+
+% Standard sets
+
+\def\cn{{\C^n}}
+\def\cnn{{\C^{n'}}}
+\def\ocn{\2{\C^n}}
+\def\ocnn{\2{\C^{n'}}}
+
+% Abbreviations
+
+\def\dist{{\rm dist}}
+\def\const{{\rm const}}
+\def\rk{{\rm rank\,}}
+\def\id{{\sf id}}
+\def\aut{{\sf aut}}
+\def\Aut{{\sf Aut}}
+\def\CR{{\rm CR}}
+\def\GL{{\sf GL}}
+\def\Re{{\sf Re}\,}
+\def\Im{{\sf Im}\,}
+\def\span{\text{\rm span}}
+
+
+\def\codim{{\rm codim}}
+\def\crd{\dim_{{\rm CR}}}
+\def\crc{{\rm codim_{CR}}}
+
+\def\phi{\varphi}
+\def\e{\varepsilon}
+\def\eps{\varepsilon}
+\def\d{\partial}
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\G{\Gamma}
+\def\D{\Delta}
+\def\Om{\Omega}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\L{\Lambda}
+\def\z{{\bar z}}
+\def\w{{\bar w}}
+\def\Z{{\1Z}}
+\def\t{\tau}
+\def\th{\theta}
+\def\p{\phi}
+\def\de{\delta}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\r{\rho}
+
+\emergencystretch15pt
+\frenchspacing
+
+\newtheorem{Thm}{Theorem}[section]
+\newtheorem{Cor}[Thm]{Corollary}
+\newtheorem{Pro}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+
+\theoremstyle{definition}\newtheorem{Def}[Thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Exa}[Thm]{Example}
+\newtheorem{Exs}[Thm]{Examples}
+
+\def\bl{\begin{Lem}}
+\def\el{\end{Lem}}
+\def\bp{\begin{Pro}}
+\def\ep{\end{Pro}}
+\def\bt{\begin{Thm}}
+\def\et{\end{Thm}}
+\def\bc{\begin{Cor}}
+\def\ec{\end{Cor}}
+\def\bd{\begin{Def}}
+\def\ed{\end{Def}}
+\def\br{\begin{Rem}}
+\def\er{\end{Rem}}
+\def\be{\begin{Exa}}
+\def\ee{\end{Exa}}
+\def\bpf{\begin{proof}}
+\def\epf{\end{proof}}
+\def\ben{\begin{enumerate}}
+\def\een{\end{enumerate}}
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+
+
+\section{Introduction}
+\subsection{Overview and motivation}
+This is the first paper in the series 
+aiming at understanding geometric invariants
+behind the tools developed by Catlin
+in his celebrated papers 
+\cite{C84a, C84b, C87}
+in order to obtain a priori estimates for the $\bar\d$ operator,
+motivated by previous foundational work of Kohn \cite{K64a, K64b, K79}.
+%on regularity properties for solutions of $\bar\d$ equations.
+%It is believed that proper understanding
+%of Catlin's machinery may lead
+%to new constructions of a priori estimates 
+%also for other classes of
+%Partial Differential Operators
+%under natural geometric conditions.
+%In view of somewhat challenging complexity of Catlin's original proofs,
+%there is considerable interest in the community 
+%in having a more accessible and simplified treatment.
+
+A geometric aspect of Catlin's a priori estimates proof
+consists of showing the existence of {\em weight functions}
+% (called weight functions by Catlin \cite{C87})
+ satisfying certain boundedness and positivity estimates for their complex Hessians,
+ that are known as ``Property (P)'' type conditions 
+ (see e.g.\ \cite{BS16} for a recent survey).
+A major difficulty when constructing such weight functions
+under geometric conditions (such as D'Angelo's finite type \cite{D82}), 
+is to keep the uniform 
+nature of the estimates across points 
+of {\em varying ``degeneracy''}
+for the underlying geometry.
+A simple example of a degeneracy measure
+is the {\em rank of the Levi form} of the 
+boundary $M:=\d D$ (where $D$ is a domain in $\cn$).
+A more refined measure
+is Catlin's multitype \cite{C84b}, see also \S\ref{m-type}.
+To deal with points of varying multitype, 
+Catlin developed his machinery of boundary systems \cite{C84b}
+to gain control of the multitype level sets
+by including them locally into certain {\em ``containing submanifolds''}
+transversal to the Levi form kernel.
+A result of this type is the content of 
+\cite[Main Theorem, Part (2)]{C84b},
+where a containing submanifold
+is constructed by a collection of 
+inductively chosen {\em boundary system functions}
+that arise as certain carefully selected
+(vector field) derivatives of the Levi form.
+
+In this paper we focus on geometric invariants
+behind the containing submanifold construction,
+which in some way extend and simplify the boundary system approach.
+To make things more concrete and explicit,
+we restrict ourselves to the
+$4$th order invariants that, in particular,
+cover the cases of pseudoconvex hypersurfaces of the finite type
+at most $4$,
+%the minimal finite type occurring
+%for Levi-degenerate pseudoconvex hypersurfaces.
+where the mutitype level sets
+boil down to simpler {\em level sets of the
+Levi (form) rank} (see Proposition~\ref{multi-quartic} for details).
+%Another motivation is that even for the finite type $4$,
+%the subelliptic exponent $\epsilon$ given in \cite{C87} 
+%(page 133)
+%seems to be fairly rough and far from optimal.
+Recall that Catlin's boundary system functions
+\cite{C84b}
+are constructed inductively with every new equation
+depending on chosen solutions for previous ones.
+In comparison, we here collect natural defining functions 
+for the Levi rank level sets
+into {\em invariant ideal sheaves $\6I(q)$} on $M$,
+for each Levi rank $q$.
+The sheaf $\6I(q)$ is generated
+by certain $1$st order Levi form derivatives as
+described in Theorem~\ref{main} below.
+In particular, arbitrary defining functions from $\6I(q)$
+can be combined without any additional relations.
+Furthermore, additional derivatives
+of the Levi form along arbitrary complex vector fields $L^3$
+(in Theorem~\ref{main}, Part (5)),
+including transversal ones,
+ are allowed for functions in $\6I(q)$.
+In comparison, for a related boundary system function
+given by the same formula,
+the outside vector field $L^3$
+would have to be in a special subbundle
+inside the holomorphic tangent bundle.
+As a result, we obtain richer classes of defining functions
+allowing for more control over containing submanifolds
+(see Example~\ref{transv-f}),
+that may potentially lead to sharper a priori estimates.
+
+%In Catlin's work \cite{C84b}, such degree of degeneracy
+%of
+%is measured by an $n$-tuple 
+%of rational numbers
+%$$
+%	\6M( p)=(m_1, \ldots, m_n) \in \4Q^n,
+%$$
+%called the {\em multitype} of $M$ at $p$
+%
+%We are going to focus here on constructing invariants
+
+%To put things in better perspective,
+%recall briefly that a significant step in 
+%the subelliptic estimates proof \cite{C87}
+%is based on constructing families of bounded potential functions
+%in strips around the given hypersurface, 
+%with their hermitian Hessians growing 
+%at least as a certain power of the strip's width.
+%The construction of the potential functions
+%proceeds by induction on certain (approximate) multitypes
+%associated to so-called {\em approximate boundary systems}.
+%The induction step relies 
+%on isolating sets of constant multitypes
+%by including them into certain submanifolds and 
+%pushing the potential estimate away
+%from each level set towards
+%points of lower multitype.
+%The required multitype and boundary system foundations
+%without the approximate contexts
+%were previously laid out by Catlin in his earlier paper \cite{C84},
+%where one of the main results -- Main Theorem, Part (2),
+%is precisely about constructing submanifolds
+%containing multitype level sets.
+%
+
+
+%We are going to focus on the geometric part of 
+
+
+%One of our goals here is to lay some foundations 
+%to be used in forthcoming papers aiming
+%at giving such a treatment.
+%A parallel goal is to make the construction more invariant
+%by defining certain canonical tensors
+%and sheaves of vector fields and functions
+%invariantly associated with the underlying CR geometry.
+%
+
+In parallel to the ideal sheaf $\6I(q)$ construction,
+we introduce {\em invariant quartic tensors} $\t^4$,
+giving a precise control over differentials of
+the functions in $\6I(q)$.
+This is expressed in Theorem~\ref{main}, part (2),
+where the tangent space of the containing manifold $S$
+equals the real kernel of the tensor.
+Importantly, the full tangent space of $S$
+(rather than only the tangential part) is controlled here
+via the kernel of $\t^4$, which means that transversal vector fields
+must also be allowed among tensor arguments.
+The tensors are constructed in Lemma~\ref{d2}
+as certain $2$nd order Levi form derivatives
+taken along all possible vector fields.
+In comparison, only derivatives with 
+respect to $(1,0)$ and $(0,1)$ vector fields
+can appear in the boundary systems.
+%
+%to prove his celebrated theorem
+%on {\em subelliptic estimates \cite{C87}
+%for pseudoconvex 
+%real hypersurfaces in $\C^n$ of finite type}.
+%
+%Subelliptic estimates are certain a priori estimates
+%for the $\bar\d$ operator
+%that appeared in the work of Kohn \cite{K64}
+%and play important role in establishing 
+%smooth boundary regularity for solutions 
+%of $\bar\d$ equation.
+%and have the form
+%$$
+%	|||\phi|||^2_{\e} \le C (
+%		\|\bar\d\phi\|^2
+%		+
+%		\|\bar\d^*\phi\|^2
+%		+
+%		\| \phi \|^2
+%	),
+%$$
+%where $\phi$ is a $(p,q)$-form
+%
+% lies in the fact
+%(in the sense of D'Angelo \cite{D82}).
+%
+
+For reader's convenience,
+we summarize the main results and constructions
+in Theorem~\ref{main},
+leaving more detailed and general statements
+with their proofs in the chapters following.
+
+
+%It is noteworthy to mention the importance
+%of combining both coordinate based multitype and 
+%coordinate-free
+%vector field based boundary system approaches
+%in Catlin's theory, each with its own advantages and limitations.
+%The same dichotomy also becomes crucial in our approach.
+%The coordinate-free vector field based construction
+%gives immediate invariance for the tensors, 
+%whereas their properties such as symmetries
+%are often easier verified via calculations in 
+%the normal form coordinates.
+
+\subsection{More details on invariant tensors and sheaves}
+Our first step in defining invariant tensors is a byproduct result 
+giving a {\em complete set of cubic invariants}
+for a general real hypersurface $M$, without pseudoconvexity assumption.
+This is achieved by constructing an invariant cubic tensor $\t^3$
+obtained by differentiating the Levi form along vector fields
+with values in the Levi kernel, see Lemma~\ref{levi-der}.
+Remarkably, to obtain tensoriality of the Levi form derivatives, 
+it is of crucial importance to require
+{\em both vector fields inside the Levi form to take values in the Levi kernel}
+as explained in Example~\ref{one-ker}.
+This stands further, in remarkable contrast with the cubic tensor $\psi_3$
+%on the compexified tangent bundle $\C T$ of $M$.
+% at a point $p$:
+%$$
+%	\t^3_p \colon \C T_p \times \C T_p \times \C T_p \to \C T_p/\C H_p,
+%$$
+%where $\C H_p$ is the complexified holomorphic tangent space.
+%A related cubic tensor has been constructed 
+defined by Ebenfelt \cite{E-jdg}
+(by means of the Lie derivatives of the contact form),
+where only one of the arguments needs to be in the Levi kernel.
+%
+%with remaining part obtained here
+%by differentiating the Levi form in the transversal direction
+%to the complex tangent.
+On the other hand, Ebenfelt's tensor $\psi_3$
+does not allow for transversal directions as $\t^3$ does.
+It turns out that the pair $(\psi_3, \t^3)$ yields
+a complete set of cubic invariants, 
+as demonstated by a normal form 
+(of order $3$)
+in Proposition~\ref{3-normal} eliminating all other terms
+that are not part of either of the tensors.
+
+We also investigate the construction based on double Lie brackets
+(also considered by Webster \cite{W}).
+This approach, however, forces all vector fields
+to be in the complexified holomorphic tangent bundle,
+leading only to a restriction of the tensor $\t^3$.
+Again, the double Lie bracket construction
+is only tensorial when both vector fields inside the inner bracket
+take their values in the Levi kernel (see Example~\ref{one-ker}).
+
+As mentioned earlier, the cubic tensor $\t^3$ is constructed without any pseudoconvexity assumption.
+On the other hand, in presence of pseudoconvexity,
+the whole tensor $\t^3$
+must vanish identically (Lemma~\ref{psc-vanish}).
+The only cubic terms that may survive are of the form \eqref{psc-cubic}
+which can never appear in the lowest weight terms,
+and hence never play a role in Catlin's multitype 
+and boundary system theory.  
+%Consequently, cubic terms do not suffice 
+%to capture the missing Levi nondegeneracy
+%at the lowest weight level.
+
+Motivated by the above, we next look for quartic tensors.
+It turns out (Example~\ref{ex-4}) 
+that this time, neither second order Levi form derivatives
+nor quartic Lie brackets provide tensorial invariants
+even when all vector field arguments take their values in the Levi kernel.
+To overcome this problem, we {\em restrict the choice of 
+the vector fields involved} by requiring a certain kind of condition of
+ ``Levi kernel inclusion up to higher order'' (Definition~\ref{ker-1}).
+% In a nutshell, this condition requires the vector 
+ In Lemma~\ref{1-ker-def} we show that
+this additional condition always holds
+for any vector field that is Levi-orthogonal
+to a maximal Levi-nondegenerate subbundle,
+which, in particular, are some of the vector fields 
+in a Catlin's boundary system.
+However, the mentioned Levi-orthogonality lacks some invariance
+as it depends on the choice of the subbundle.
+In contrast, the Levi kernel inclusion up to order $1$
+is invariant and only depends
+on the $1$-jet of the vector field at the reference point.
+
+
+With that restriction in place, an invariant quartic tensor $\t^4$
+can now be defined in a similar fashion.
+%We also obtain an improved normal form
+Then
+it's restriction $\t^{40}$ enters 
+the lowest weight normal form 
+with weights $\ge 1/4$,
+see Proposition~\ref{4-normal}.
+It turns out, the restriction $\t^{40}$ 
+provides exactly the missing information 
+at the lowest weight level for hypersurfaces of finite type $4$
+(where finite type $3$ cannot occur for pseudoconvex points in view of
+Corollary~\ref{pse-nf-cor}).
+For example, both D'Angelo finite type $4$
+and Catlin's multitype up to entry $4$
+can be completely characterized in terms
+of $\t^{40}$.
+In fact, having the finite type $4$ is equivalent
+to the nonvanishing of $\t^{40}$ on complex lines
+(Proposition~\ref{type-quartic}),
+whereas having a multitype up to entry $4$
+is equivalent to $\t^{40}$ having trivial kernel
+(Propositions~\ref{multi-quartic}).
+
+In \S\ref{ideal} we use the quartic tensor $\t^4$ to 
+characterize the differentials of functions in 
+the ideal sheaf $\6I(q)$
+%(by the very definition of $\t^3$ via Lemma~\ref{d2})
+as well as the minimal tangent spaces
+of containing manifolds
+defined by a transversal set of functions in $\6I(q)$.
+
+Finally, in \S\ref{bs} we obtain a characterization 
+for a Catlin's boundary system,
+where the most difficult part 
+of obtaining vector field directions of nonvanishing Levi form derivatives
+at the lowest weight 
+is replaced by the nonvanishing of the tensor $\t^{40}$
+on the vector fields' values at the reference point,
+a purely algebraic condition.
+
+
+
+In a forthcoming paper will shall 
+extend the present 
+geometric approach 
+towards its {\em approximate versions}
+with necessary control
+to perform the induction step
+in the subelliptic estimate proof.
+
+\bigskip
+
+{\bf Acknowledgements.}
+The author would like to thank
+J. J. Kohn, D. W. Catlin, J. P. D'Angelo,
+E. J. Straube, M. Kolar, S. Fu,
+J. D. McNeal and A. C. Nicoara
+for numerous inspiring discussions.
+
+
+
+
+\section{Notation and main results}
+We shall work in the smooth ($C^\infty$) category
+unless stated otherwise.
+Let $M\subset \C^{n}$ be a real hypersurface.
+We write $T:= TM$ for its tangent bundle, 
+$H = HM \subset  T$ for the complex (or holomorphic) tangent bundle,
+$Q:= T/H$ for the normal bundle,
+as well as 
+$$
+	\C T := \C\otimes T,
+	\quad 
+	\C H: =\C\otimes H,
+	\quad
+	\C Q:= \C\otimes Q,
+$$
+for their respective complexifications.
+Further, $H^{10}$ and $H^{01}= \1{H^{10}}$ denote $(1,0)$ and $(0,1)$ bundles respectively, such that $\C H = H^{10}\oplus \1{H^{10}}$.
+By a slight abuse of notation, we write $L\in V$
+when a vector field $L$ is a local section in $V$,
+which can be a bundle or a sheaf.
+
+On the dual side, 
+$\Om$ stands for the bundle of all real $1$-forms, 
+$\C \Om$ for all complex $1$-forms,
+$\Om^0$ for all {\em contact forms}, 
+i.e.\ forms form $\Om$ that are vanishing on $H$ and real-valued on $T$,
+and $\C\Om^0$ for the corresponding complexification.
+
+Recall that a {\em (local) defining function} of $M$
+is any real-valued function $\rho$ with $d\rho\ne 0$ such that $M$ given by 
+$\rho=0$. For any defining function $\rho$, the one-form 
+$\th: = i\d\rho$ 
+spans (over $\R$) the bundle $\Om^0$ of all contact forms. 
+ 
+We shall consider the standard pairing $\la \th, L\ra := \th(L)$
+for $\th\in \C\Om$, $L\in \C T$.
+By a slight abuse, we keep the same notation also for the pairing
+$$
+	\la \cdot, \cdot \ra \colon \C\Om^0 \times \C Q \to \C
+$$
+between the (complex) contact forms and the normal bundle.
+With this notation, we regard the {\em Levi form} at a point $p\in M$ 
+as  $\C$-bilinear map
+$$
+	\t^2_p \colon H^{10}_p \times \1{H^{10}_p} \to \C Q_p,
+$$
+which
+is uniquely determined by the identity
+\beq\Label{levi-id}
+	\la \th_p, \t^2_p(L^2_p, L^1_p) \ra = - i \la \th, [L^2, L^1] \ra_p,
+	\quad 
+	L^2\in H^{10}, \, L^1\in \1{H^{10}}.
+\eeq
+The normalization of $\t^2$ used here is chosen
+such that for the quadric
+$$
+	\rho = -2\Re w + q(z,\z) =0,
+	\quad
+	(w,z)\in \C\times \C^{n-1},
+$$ 
+%the vector fields
+%$$
+%	L_j := \d_{z_j} + \z_j \d_w
+%$$
+and the contact form $\th = i\d \rho$,
+we have
+$$
+	\la \th_0,  \t^2_0(\d_{z_j}, \d_{\z_k}) \ra = \d_{z_j} \d_{\z_k} q,
+$$
+or more generally
+\beq\Label{levi-calc}
+	\la \th_0,  \t^2_0(v^2, v^1) \ra = \d_{v^2} \d_{v^1} q,
+\eeq
+where $v^2 \in H^{10}_0$, $v^1\in \1{H^{10}_0}$.
+Here $\d_v$ denotes the directional derivative 
+along the vector $v$, which is thought to be applied at every point.
+%We further use \eqref{levi-calc} to extend $\l_0$
+%to a tensor $\C H_0 \times \C H_0\to \C Q_0$.
+
+%Motivated by this calculation, we extend the Levi form $\l$
+%canonically to a (unique) symmetric tensor
+%\beq\Label{levi-ext}
+%	\t^2_p \colon \C H_p\times \C H_p \to \C Q_p,
+%\eeq
+%which vanishes on 
+%$H^{10}_p\times H^{10}_p$ 
+%and
+%$H^{01}_p\times H^{01}_p$.
+%That is, $\t^2$ extends the Levi form by symmetry and by vanishing
+%in the remaining arguments.
+%%Equivalently 
+%In addition, $\t^2_p$ satisfies the reality condition
+%$$
+%	\1{\t^2_p(v^2, v^1)} = \t^2_p(\1v^2, \1v^1).
+%$$
+%Furthermore, for the qua
+
+We say that a {\em point $p\in M$ is of Levi rank $q$},
+if the Levi form $\t^2_p$ at $p$ has rank $q$.
+A subbundle $V\subset H^{10}$
+is called {\em Levi-nondegenerate},
+if the Levi form is nondegenerte on $V\times \1V$. 
+For every such subbundle $V$,
+we write 
+%$$
+%	V^\perp := \{ v\in H^{10} : \t^2(v, v^1) =0   \} 
+%$$
+$$
+	V^\perp \subset H^{10},
+	\quad
+	V^\perp = \cup_x V_x^\perp,
+	\quad
+	V_x^\perp = \{ v\in H^{10}_x : \t^2_x(v, \1v^1) =0 \text{ for all } v^1\in V\},
+$$
+for the orthogonal complement with respect to the Levi form,
+which is necessarily a subbundle.
+
+Finally, we write $K^{10}_p\subset H^{10}_p$
+and $K^{01}_p = \1{K^{10}_p}\subset H^{01}_p$
+for the Levi kernel components at $p$, 
+$\C K_p= K^{10}_p \otimes \1{K^{10}_p}$
+for the complexification and
+$K_p = \C K_p \cap T_p$
+for the corresponding real part.
+
+
+%\subsection{Weight notation}
+\bigskip
+The following is an overwiev of some of the main results:
+
+
+\bt\Label{main}
+Let $M\subset\cn$ be a pseudoconvex real hypersurface.
+Then for every $q\in \{0, \ldots, n-1\}$, there exist 
+an invariant submodule sheaf $\6S^{10}(q)$ of $(1,0)$ vector fields,
+an invariant ideal sheaf $\6I(q)$ of complex functions,
+and for every $p\in M$ of Levi rank $q$,
+an invariant quartic tensor
+$$
+	\t^4_p \colon  \C T_p \times \C T_p 
+	\times K^{10}_p\times \1{K^{10}_p} \to \C Q_p,
+$$
+and
+a real submanifold $S\subset M$ through $p$,
+such that the following hold:
+
+\begin{enumerate}
+
+\item 
+$S$ contains the set of all points $x\in M$ of Levi rank $q$
+in a neighborhood of $p$.
+
+\item
+The tangent space of $S$ at $p$ equals the real part of the kernel of $\t^4_p$:
+$$
+	T_p S = \Re\ker \t^4_p = \{ v\in T_p :  \t^4_p(v, v^3, v^2, v^1) = 0 
+	\text{ for all } v^3, v^2, v^1 \}.
+$$
+
+
+\item
+In suitable holomorphic coordinates vanishing at $p$,
+$M$ admits the normal form
+$$
+	2\Re w = \sum_{j=1}^q |z_{2j}|^2 + \phi_4(z_4,\z_4) + o_w(1),
+	\quad
+	(w, z_2, z_4)\in \C\times \C^{q}\times \C^{n-q-1},
+$$
+where $o_w(1)$ has weight greater than $1$,
+with weights $1$, $1/2$ and $1/4$ being assigned to
+the components of $w$, $z_2$ and $z_4$ respectively,
+and 
+where $\phi_4$ is a homogenous polynomial of degree $4$
+representing a restriction of the quartic tensor $\t^4_p$ in the sense that
+$$
+	\t^4_p(v^4, v^3, v^2, v^1) 
+	= \d_{v^4} \d_{v^3} \d_{v^2} \d_{v^1} \phi_4
+$$
+holds for $v^4, v^3\in \C K_0$
+and
+$v^2, \1v^1\in K^{10}_0$.
+
+\item
+$S$ is given by 
+$$
+	S = \{f^1 = \ldots = f^m =0\},
+	\quad
+	df^1\wedge \ldots \wedge df^m \ne 0,
+	\quad
+	f^j \in \Re \6I(q).
+$$
+In fact, any $f\in \Re \6I(q)$ vanishes
+on the set of point of Levi rank $q$. 
+
+\item
+The ideal sheaf $\6I(q)$
+is generated by all functions $f$ of the form
+$$
+	f = L^3 \la \th, [L^2, L^1] \ra,
+	\quad 
+$$
+where $\th\in\Om^0$ is a contact form, 
+$L^3\in \C T$ arbitrary complex vector field,
+and $L^2, \1L^1 \in \6S^{10}(q)$
+arbitrary sections of the submodule sheaf.
+
+\item
+The submodule sheaf $\6S^{10}(q)$
+is generated by all $(1,0)$ vector fields $L$
+satisfying $L\in V_L^\perp$,
+with $V_L\subset H^{10}$
+a Levi-nondegenerate subbundle
+of rank $q$ in a neighborhood of $p$.
+
+\end{enumerate}
+
+
+In addition, when $M$ is of finite type at most $4$ at $p$,
+the following also holds:
+
+
+\begin{enumerate}
+
+\item[(i)]
+The intersection $T_p S\cap K_p$ with the Levi kernel $K_p$ is totally real.
+\item[(ii)]
+For every $v\in K^{10}_p$, the tensor $\t^4_p$ does not identically 
+vanish on
+$$
+	(\C v + \C \1v) \times (\C v + \C \1v) \times \C v\times \C \1v.
+$$
+\item[(iii)]
+The (Catlin's) multitype at $p$ equals
+%\beq\Label{multitype}
+$$
+	(1,2,\ldots, 2, 4,\ldots, 4),
+$$
+%\eeq
+where the number of $2$'s equals the Levi rank at $p$.
+In particular, the multitype is determined by the Levi rank.
+
+\end{enumerate}
+\et
+
+For proofs and more detailed and general statements,
+see the respective sections below.
+Part (6) can be used to define 
+the submodule sheaves $\6S^{10}(q)$,
+see \S\ref{submodules}.
+Then the ideal sheaves $\6I(q)$ are defined in Part (5),
+see also \S\ref{ideal}.
+In particular, local sections in $\6I(q)$
+vanish at points of Levi rank $q$
+by Corollary~\ref{iq-van}.
+The quartic tensor $\t^4$ is constructed 
+\S\ref{quartic}.
+In view of Proposition~\ref{main0},
+the intersection of real kernels of differentials
+$df$ for $f\in \Re \6I(q)$ coincides
+with $\Re \ker \t^4_p$.
+Hence we can choose functions $f^j$
+satisfying (4) and (2).
+The normal form in (3) 
+follows from Proposition~\ref{4-normal}.
+
+When $M$ is of finite type $4$,
+Proposition~\ref{type-quartic}
+implies that $\t^4$
+has no holomorphic kernel,
+and therefore its (real) kernel as in (2) is totally real,
+as stated in (i).
+Statement (ii) is also part of Proposition~\ref{type-quartic}.
+Finally, statement (iii) about the multitype 
+is contained in \S\ref{m-type}.
+
+\bigskip
+
+The following simple example
+illustrates one of the differences between
+functions in the ideal sheaf $\6I(q)$
+and  boundary systems
+(as defined in \cite[\S2]{C84b},
+see also \S\ref{bs} below).
+
+\be\Label{transv-f}
+Consider the hypersurface
+$M\subset\C^2_{w,z}$ given by
+$$
+	2\Re w = \phi(z,\z, \Im w), \quad 
+	\phi(z,\z,u):= |z|^4 + u^2|z|^2,
+$$
+which is pseudoconvex and of finite type $4$.
+Then a boundary system $\{ L_2; r_2\}$
+%
+%can be chosen as
+%$$
+%	L_2 \equiv \d_z \mod \d_w,
+%	\quad 
+%	r_2 = \Re L_2 \d\phi([L_2, \1L_2])
+%$$
+defines the  $2$-dimensional
+submanifold $S:=\{ r_2 =0\} \subset M$
+to contain all points of Levi rank $0$.
+However, since $r_2$ is of the form
+\beq\Label{r2}
+	r_2 = \Re L^3 \la \th, [L^2, L^1]\ra
+\eeq
+(in the setup of Theorem~\ref{main}, part (5)),
+its differential at $0$ is given by
+$$
+	d r_2 (v) = \Re \t^4_0 (v, L^3_0, L^2_0, L^1_0),
+$$
+which vanishes on the transversal space $\{dz=0\}$.
+Consequently, any $S$ defined by a boundary system function $r_2$
+must be tangent to $\{dz=0\}$.
+% defined by 
+%$\Re z = 0$.
+%Another boundary system would give $\Im z =0$.
+
+On the other hand, 
+in the ideal sheaf $\6I(0)$
+we can choose a function given by \eqref{r2}
+with {\em transversal $L^3$}.
+That will allow to reduce $S$ down to only the origin 
+$z=w=0$,
+which, in fact, is the set of points of Levi rank $0$.
+\ee
+
+
+
+
+\section{Invariant cubic tensors}
+
+We begin by investigating the $3$rd order invariants
+without the pseudoconvexity assumption.
+
+\subsection{Double Lie brackets}
+In presence of a nontrivial Levi kernel $K^{10}_p$,
+it is natural to look for cubic tensors
+arising from double Lie brackets
+with one of the vector fields 
+having its value inside the Levi kernel: 
+\beq\Label{triple}
+	\la \th, [L^3, [L^2, L^1]] \ra, 
+	\quad
+	\th \in \Om^0,
+	\quad L^3, L^2\in H^{10}, 
+	\, L^1\in \1{H^{10}}, 
+	\quad
+	L^1_p \in \1{K^{10}_p}.	
+\eeq
+
+However, the following simple example shows that 
+\eqref{triple} does not define a tensor in general:
+
+\be\Label{one-ker}
+Let $M\subset \C^3_{z_1, z_2, w}$ be
+the degenerate quadric
+\beq\Label{deg-qua}
+	\r = -(w+\w) + z_1\z_1 =0,
+\eeq
+and consider the $(1,0)$ vector fields
+$$
+	L^3:= \d_{z_2},
+	\quad
+	L^2:= \d_{z_2} + cz_2 \1{L^1},
+	\quad
+	L^1:= \d_{\z_1} + z_1\d_{\w}.
+$$
+Then 
+$$
+	[L^3, [L^2, L^1]] = c [L^1, \1{L^1}] = c (\d_{w} - \d_{\w}),
+$$
+and hence for a contact form $\th\in \Om^0$,
+the value $$\la \th, [L^3, [L^2, L^1]] \ra_p$$
+depends on $c$,
+even though all values $L^j_p$ are independent of $c$.
+Note that both $L^2_0$ and $L^3_0$ (but not $\1{L^1_0}$)
+are inside the Levi kernel $K^{10}_0$.
+Hence the double Lie bracket does not define any tensor
+$K^{10}_p\times K^{10}_p \times \1{H^{10}_p}\to \C Q_p$.
+
+The same example also shows that neither
+the Levi form derivative $L^3 \la \th, [L^2, L^1]\ra$
+considered below
+behaves tensorially on the same spaces.
+\ee
+
+
+In contrast, we do get an invariant tensor when {\em both vector fields}
+inside the inner Lie bracket have their values in the Levi kernel
+at the reference point.
+We write $\t^{31}$ for the corresponding tensor, 
+reflecting the fact that it will become a restriction 
+of the full tensor $\t^3$ below.
+
+\bl\Label{bracket-tensor}
+	The double Lie bracket $[L^3, [L^2, L^1]]$ defines
+	an invariant tensor
+	\beq
+		\t^{31}_p\colon \C H_p \times K^{10}_p \times \1{K^{10}_p} \to \C Q_p,
+	\eeq
+	i.e.\ there exists an unique $\t$ as above satisfying
+	$$
+		\t^{31}_p(L^3_p, L^2_p, L^1_p) 
+		= -i  [L^3, [L^2, L^1]]_p \mod \C H_p
+		,
+%		\quad \th\in \Om^0,
+		\quad L^3, L^2, \1{L^1} \in H^{10},
+		\quad L^2_p, \1{L^1_p}\in K^{10}_p.
+	$$
+	
+	Furthermore, $\t^{31}_p$ is symmetric on $K^{10}_p\times K^{10}_p\times \1{K^{10}_p}$ 
+	in its $K^{10}$-arguments, 
+	and on $\1{K^{10}_p}\times K^{10}_p\times \1{K^{10}_p}$ in its $\1{K^{10}}$-arguments,  
+	and satisfies the reality condition
+\beq\Label{30-sym}
+	\1{\t^{31}_p(v^3, v^2, v^1)} = \t^{31}_p(\1v^3, \1v^1, \1v^2).
+\eeq
+\el
+\bpf
+It suffices to show that
+\beq\Label{van}
+	[L^3, [L^2, L^1]]_p \in \C H_p
+\eeq
+holds
+whenever any of the values $L^j_p$ is $0$.
+Since any such $L^j$ can be written as linear combination
+$\sum a_k L_k$ with $a_k(p)=0$ and $L_k$ being in the same bundle,
+it suffices to assume $L^j = a \2L^j$ with $a(p)=0$,
+in which case \eqref{van} is easy to verify.
+The reality condition is straightforward and the symmetries follow
+from the Jacobi identity.
+\epf
+
+A closely related construction 
+was proposed by Webster~\cite{W}.
+
+
+\subsection{The Levi form derivative}
+As alternative to the double Lie bracket tensor, one can 
+differentiate the Levi form after pairing with a contact form,
+which is similar to the approach employed by Catlin 
+in his boundary system construction:
+\beq\Label{der}
+	L^3 \la \th, [L^2, L^1] \ra.
+\eeq
+Again Example~\ref{one-ker} shows that \eqref{der}
+does not define a tensor if both $L^2_p$, $L^3_p$
+are in the Levi kernel if $L^1_p$ is not.
+On the other hand, if {\em both vector fields
+$L^1$, $L^2$ inside the Lie brackets
+have their value at $p$ contained in the Levi kernel}, we do obtain a tensor
+even when the outside vector field $L^3$ is not necessarily contained in $\C H$:
+
+\bl\Label{levi-der}
+There exists an unique cubic tensor
+\beq
+	\t^3_p \colon \C T_p \times  K^{10}_p \times \1{K^{10}_p} \to \C Q_p,
+\eeq
+satisfying
+	$$
+		\la \th_p, \t^3_p(L^3_p, L^2_p, L^1_p) \ra
+		= -i (L^3\la \th, [L^2, L^1] \ra)_p
+		,
+		\quad \th\in \Om^0,
+		\quad L^3 \in \C T,
+		\quad L^2, \1{L^1} \in H^{10},
+		\quad L^2_p, \1{L^1_p}\in K^{10}_p.
+	$$
+
+Furthermore, $\t^3_p$ satisfies the reality condition
+\beq\Label{3-sym}
+\1{\t^3_p(v^3, v^2, v^1)} = \t^3_p(\1v^3, \1v^1, \1v^2).
+\eeq
+\el
+
+\bpf
+The proof is similar to that of Lemma~\ref{bracket-tensor},
+and the symmetry follows directly from the definition.
+\epf
+
+
+
+\subsection{A normal form of order $3$ and complete set of cubic invariants}
+\Label{norm-f}
+To compare tensors $\t^{31}$ and $\t^3$,
+it is convenient to use a partial normal form
+for the cubic terms.
+In the sequel we write $\phi_{j_1\ldots j_m}(x^1,\ldots x^m)$
+for a polynomial of the multi-degree $(j_1,\ldots, j_m)$
+in its corresponding variables.
+We also write 
+$z_k=(z_{k1},\ldots, z_{km})\in \C^m$
+for coordinate vectors and their components.
+
+\bp\Label{3-normal}
+For every real hypersurface $M$ in $\C^{n}$ and point $p\in M$ of Levi rank $q$, 
+there exist local holomorphic coordinates 
+$$
+	(w,z)=(w, z_2, z_3)\in \C\times \C^q\times \C^{n-q-1},
+$$ 
+vanishing at $p$,
+where $M$ takes the form
+$$
+	w + \w = \phi(z,\z, i(w-\w)), 
+	\quad
+	\phi(z,\z,u) = \phi_2(z,\z,u) + \phi_3(z,\z,u) + O(4), 
+$$
+where
+$$
+	\phi_2(z,\z,u) = \phi_{11}(z_2, \z_2),
+	\quad
+	\phi_3(z,\z,u) = 2\Re \phi_{21}(z,\z_3) + \phi_{111}(z_3, \z_3, u),
+$$
+and $O(4)$ stands for all terms of total order at least $4$.
+\ep
+
+
+\bpf
+It is well-known that the quadratic term $\phi_2$ 
+can be transformed into $\phi_{11}(z_2, \z_2)$ 
+representing the nondegenerate part of the Levi form.
+Furthermore, as customary, we may assume that the cubic term $\phi_3$ has no harmonic terms.
+
+Next, by suitable polynomial transformations 
+$$
+	(z,w)\mapsto (z + \sum_{j=1}^r z_{2j} h_j(z,w) , w),
+$$
+we can eliminate all cubic monomials of the form $\z_{2j} h(z,u)$
+and their conjugates, where $h(z,w)$ is any holomorphic quadratic monomial.
+The proof is completed by inspecting the remaining cubic monomials.
+\epf
+
+Next we use the convenient $(1,0)$ vector fields with obvious notation:
+
+\bl\Label{vf-norm}
+For a real hypersurface $M\subset \C^{n}$ given by
+\beq\Label{graph}
+	w + \w = \phi(z,\z, i(w-\w)), \quad (w, z)\in\C\times \C^{n-1},
+\eeq
+the subbundle $H^{10}$ of $(1,0)$ vector fields is spanned by
+$$
+	L_j := \d_{z_j} + \frac{\phi_{z_j}}{1-i\phi_u} \d_w, 
+	\quad 
+	j=1,\ldots, n-1.
+$$
+More generally, $H^{10}$ is spanned by all vector fields of the form
+\beq\Label{lv}
+	L_v:= \d_v + \frac{\phi_{v}}{1-i\phi_u} \d_w, 
+	\quad v\in \{0\} \times \C^{n-1},
+\eeq
+where the subscript $v$ denotes the differentiation in the direction of $v$.
+%Furthermore, if 
+%we assign weights $1>\mu_2\ge \ldots \ge \mu_n$
+%to $w, z_2, \ldots z_n$ (with their components and conjugates) respectively
+%$\rho = -2\Re w + \phi$ is weighted homogenous 
+%with respect to some positive weights
+\el
+
+
+
+Calculating with special vector fields from Lemma~\ref{vf-norm}, we obtain:
+\bc\Label{3-calc}
+Let $M$ be in the normal form given by Proposition~\ref{3-normal}.
+Then tensors $\t^{31}_p$ and $\t^3_p$ defined in Lemmas~\ref{bracket-tensor}
+and ~\ref{levi-der} respectively satisfy
+\beq\Label{3-dif}
+	\la \th_0,  \t^{31}_0(v^3, v^2, v^1) \ra
+	=
+	\la \th_0,  \t^3_0(v^3, v^2, v^1) \ra
+	= \d_{v^3} \d_{v^2} \d_{v^1} \phi_3,
+\eeq
+where
+$$
+	v^3, v^2, \1v^1 \in K^{10}_0 \cong \{0\}\times \{0\} \times \C^{n-q-1},
+	\quad
+	\th=i \d\rho, 
+	\quad
+	\rho =-2\Re w + \phi.
+$$
+Furthermore, the second identity in \eqref{3-dif} still holds for $v^3\in \C H_0$.
+%coincide up to suitable constants
+%with restrictions of the polarization of $\phi_3$.
+\ec
+In particular,
+$\t^{31}$ is a restriction of $\t^3$ 
+to $\C T_p \times  K^{10}_p \times \1{K^{10}_p}$,
+explaining the notation.
+
+
+\br
+The term $\phi_{21}$ in Proposition~\ref{3-normal}
+represents, up to a nonzero constant multiple,
+the cubic invariant tensor 
+$\psi_3$ 
+introduced by Ebenfelt~\cite{E-jdg}.
+It follows from Proposition~\ref{3-normal}
+that $\psi_3$ and $\t^3$
+coincide (up to a constant) on their common set of definition
+and together
+constitute the full set of cubic invariants of $M$ at $p$.
+%In fact, $\t$ corresponds to a restriction of $\psi_3$,
+%whereas $\2\t$ extends that restriction to the full tangent space
+%in the first component.
+\er
+
+
+
+\subsection{Symmetric extensions}
+As consequence Corollary~\ref{3-calc},
+$\t^3$ is symmetric in
+$K^{10}$- or in $\1{K^{10}}$-vectors
+whenever two of them occur in any two arguments.
+This property leads to a natural symmetric extension:
+
+\bl\Label{3-symm}
+The restriction 
+$$
+	\t^{30}_p \colon \C K_p \times K^{10}_p\times \1{K^{10}} \to \C Q_p
+$$ 
+of the cubic tensor $\t^3_p$
+ admits an unique symmetric extension
+$$
+	\2\t^{30}_p \colon
+	\C K_p \times \C K_p \times \C K_p \to \C Q_p,
+$$
+satisfying
+$$
+	\la \th_0,  \2\t^{30}_0(v^3, v^2, v^1) \ra
+	= \d_{v^3} \d_{v^2} \d_{v^1} \phi_3,
+$$
+whenever $M$ is in a normal form $\rho= -2\Re w +\phi=0$
+as in Proposition~\ref{3-normal}
+and $\th = i\d\rho$.
+\el
+
+\br
+Note that since $\phi_3$ has no harmonic terms in a normal form,
+the extension tensor $\2\t^{30}$ 
+always vanishes whenever its arguments
+are either all in $K^{10}$ or all in $\1{K^{10}}$.
+\er
+
+\be
+In contrast to $\t^{30}$, the full cubic tensor $\t^3$
+does not in general have any invariant extension to
+$\C T\times \C K \times \C K$.
+Indeed, consider the cubic $M\subset \C^2$ given by
+$$
+	\rho := -2\Re w + 2\Re (z^2\z) =0.
+$$
+Then $\d_{\w} \d_z \d_z\phi_3=0$.
+Now consider a change of coordinates with linear part
+$(w,z)\mapsto (w, z+ iw)$ transforming $\d_{\w}$
+into $\d_{\w}-i\d_{\z}$.
+Then, after removing harmonic terms, the new cubic term takes form
+$$
+	\phi_3 = 2\Re (z^2\z) - 4\Im w z\z.
+$$
+But then $(\d_{\w} -i\d_{\z}) \d_z \d_z\phi_3\ne 0$, 
+i.e.\ the $3$rd derivatives of $\phi_3$ do not transform as tensor
+when passing to another normal form.
+\ee
+
+
+
+%This kind of symmetry can be formalized as follows:
+%\bd
+%	We call a multilinear map $\psi\colon V_1\times \ldots \times V_m \to W$
+%	symmetric if 
+%	$$
+%		\psi(v_1, \ldots, v_j, \ldots, v_k, \ldots, v_m) 
+%		=
+%		\psi(v_1, \ldots, v_k, \ldots, v_j, \ldots, v_m)
+%	$$
+%	holds
+%	whenever $v_j, v_k\in V_j\cap V_k$,
+%	i.e.\ $\psi$ does not depend on the order of its arguments, whenever the latters can be interchanged.
+%\ed
+%
+%With that definition, we have:
+%
+
+%and both extend to a unique cubic tensor
+%$$
+%	\t^3_p  \colon \C T_p \times \C K_p\times \C K_p \to \C Q_p,
+%$$
+%which is symmetric in the last two arguments
+%and in all $3$ arguments when restricted to
+%$(\C K_p)^3$, and
+%which vanishes on $(H^{10}_p)^3$ and $(H^{01}_p)^3$
+%(i.e.\ has no harmonic parts).
+%Furthemore, in the setup of Corollary~\ref{3-calc},
+%the extension $\t^3$ still satisfies
+%$$
+%	\la \th_0,  \t^3_0(v_3, v_2, v_1) \ra
+%	= \d_{v_3} \d_{v_2} \d_{v_1} \phi_3.
+%$$
+
+
+
+
+%Here $p_{11}$ represents the Levi form and $p_{21}$ and $p_{111}$
+%together the invariant cubic tensors
+%$$
+%	\l_1\colon H^{10}\times H^{10} \times \1{K^{10}} \to \C Q,
+%	\quad
+%	\l_2\colon \C T\times K^{10}\times \1{K^{10}}\to \C Q.
+%$$
+%
+
+
+\subsection{Cubic tensors vanishing for pseudoconvex hypersurfaces}
+If $M$ is pseudoconvex, the Levi form $\la \th, [L, \1{L}]\ra$
+does not change sign, and therefore the cubic tensor $\t^3$ must vanish identically. We obtain:
+
+\bl\Label{psc-vanish}
+Let $M$ be a pseudoconvex hypersurface and $p\in M$.
+Then the cubic tensor $\t^3_p$ (and therefore its restriction $\t^{31}_p$) vanishes identically.
+Equivalently, the cubic normal form in Proposition~\ref{3-normal} satisfies
+\beq\Label{psc-cubic}
+	\phi_{21}(z, \z_3) = \sum_{jkl} c_{jkl} z_{2j}z_{2k}\z_{3l},
+	\quad
+	\phi_{111}(z_3, \z_3, u) =0.
+\eeq
+\el
+
+The remaining cubic terms in \eqref{psc-cubic} 
+can be absorbed into higher weight terms as follows.
+We write $o_w(m)$ for terms of weights heigher than $m$.
+
+\bc\Label{pse-nf-cor}
+A pseudoconvex hypersurface $M$ in suitable holomorphic coordinates
+is given by
+\beq\Label{psc-cubic-red}
+w + \w = \phi(z,\z, i(w-\w)), 
+\quad
+\phi =
+ \sum_j |z_{2j}|^2 + o_w(1),
+\eeq
+where $o_w$ is calculated for $w$, $z_{2j}$, $z_{3k}$, and their conjugates, 
+having weights 
+$1$, $\frac12$, $\frac13$ respectively.
+In particular, $M$ cannot be of finite type $3$.
+\ec
+
+The last statement follows directly from \eqref{psc-cubic-red},
+since the contact orders  with lines in $z_3$ directions
+are at least $4$.
+
+
+
+\section{Invariant quartic tensors}
+If the tensor $\t^3$ (or $\t^{30}$) vanishes,
+it is natural to look for higher order invariants by taking iterated Lie brackets
+or higher order derivatives of Levi form.
+However, 
+in contrast to the statements of Lemmas~\ref{bracket-tensor} 
+and \ref{levi-der},
+we don't obtain a tensor
+even when all vector field values are in the kernel in the strongest sense,
+as demonstrated by the following example.
+
+\be\Label{ex-4}
+Let $M\subset \C^3_{z_1, z_2, w}$ be 
+the degenerate quadric 
+from Example~\ref{one-ker},
+and set 
+$$
+	L:=\d_{z_2} +  c z_2(\d_{z_1} + \z_1\d_w).
+$$
+Then 
+$$
+	[L, \1L] = |c z_2|^2 (\d_{\w} - \d_w),
+$$
+and
+both $\la \th, [L, [\1L, [L, \1L]]] \ra_0$
+and $(L\bar L \la \th,  [L, \bar L] \ra)_0 $
+depends on $c$, even though
+the value $L_0$ is contained in the Levi kernel $K_0^{10}$,
+is independent of $c$,
+and the cubic tensor $\t^3_0$ identically vanishes.
+\ee
+
+
+\subsection{Vector fields that are in the Levi kernel up to order $1$}
+In view of Example~\ref{ex-4},
+in order to obtain a tensor, we need to restrict
+the choice of the vector fields.
+This motivates the following definition:
+
+\bd\Label{ker-1}
+Let $L$ be a $(1,0)$ vector field.
+We say that 
+{\em $L$ is in the Levi kernel up to
+order $1$ at $p$} if,
+for any vector fields $L^1\in H^{10}$, $L^2\in \C T$,
+and any contact form $\th$, the following holds:
+\beq\Label{1-ker}
+	(\la \th, [L^1, \1L]\ra )_p
+	= (L^2 \la \th, [L^1, \1L] \ra)_p 
+	= 0.
+\eeq
+
+More generally, 
+for a fixed tangent vector $v\in \C T_p$,
+we say that
+{\em $L$ is in the Levi kernel up to 
+$v$-order $1$ at $p$} 
+if \eqref{1-ker}
+holds whenver $L^2_p=v$. 
+(The latter property obviously depends only on $v$
+rather than its vector field extension $L^2$.)
+Finally, if the above property holds for all $v$
+in a vector subspace $V\subset \C T_p$,
+we say that
+{\em $L$ is in the Levi kernel up to 
+$V$-order $1$ at $p$}.
+\ed
+
+
+%Here the first identity expresses the inclusion $L_p\in K^{10}_p$ in the Levi kernel.
+%We emphasize that the order is {\em tangential}
+%due to our choice of the differentiation of the Levi form 
+%in \eqref{1-ker}
+%only along $(1,0)$ and $(0,1)$ vector fields.
+
+It is straightforward to see that for a
+\bl\Label{1-jet-dep}
+For any $(0,1)$ vector field $\1L$
+with $\1L_p\in \1{K^{10}_p}$, 
+the expression
+$$ 
+	(L^2 \la \th, [L^1, \1L] \ra)_p 
+$$
+only depends on the values $L^2_p, L^1_p$ and $\th_p$,
+as well as the $1$-jet of $L$ at $p$.
+In particular,  $L$ being in the Levi kernel up to order $1$
+is a linear condition on the $1$-jet of $L$ at $p$.
+%for which the corresponding tensor vanishes.
+\el
+
+\be
+In the setting of Example~\ref{ex-4},
+choosing $L^1:= \d_{z_1}$, we compute
+$$
+	(L \la \th, [L^1, \1L] \ra )_0 \ne 0,
+$$
+which shows that $L$ is not in the Levi kernel of tangent order $1$,
+even if its value at $0$ is contained in the Levi kernel.
+\ee
+
+
+\br\Label{bracket-restrict}
+Using a normal form as in Proposition~\ref{3-normal} 
+and calculating with vector fields \eqref{lv},
+we can obtain a condition equivalent to
+ \eqref{1-ker}
+with $L^2$ in $\C H$ (rather than in $\C T$), which can be 
+stated in terms of double Lie bracket:
+\beq\Label{1-ker'}
+	\la \th_p, [L^1, \1L]_p\ra
+	= \la \th_p, [L^2, [L^1, \1L]]_p \ra 
+	= \la \th_p, [\1L^2 , [L^1, \1L]]_p\ra)
+	= 0.
+\eeq
+\er
+
+
+
+A priori, it is not at all clear
+that vector fields as in Definition~\ref{ker-1} exist.
+The following lemma
+provides an easy way of constructing them.
+
+
+\bl\Label{1-ker-def}
+Let $M$ be have Levi form of rank $r$ at $p\in M$,
+with Levi kernel $K^{10}_p$.
+Assume that $L$ is in the Levi kernel
+up to order $1$ at $p$,
+as per Definition~\ref{ker-1}.
+Then $L_p\in K^{10}_p$ and
+\beq\Label{3-vanish}
+	\t^3_p(L^2_p, L^1_p, \1L_p) 
+	%= \2\t(\1L^2_p, L^1_p, \1L_p) 
+	= 0, 
+	\quad L^2, L^1\in H^{10}, 
+	\quad L^1_p\in K^{10}_p.
+\eeq
+must hold for all $L^2$, $L^1$.
+(Equivalently, $\1L_p$ is contained in the kernel of $\t^3_p$ in the last argument).
+
+Vice versa, assume that $L_p\in K^{10}_p$ and 
+\eqref{3-vanish} hold.
+Let
+$$(\2L^1, \ldots, \2L^q)$$
+be a Levi-orthonormal system of 
+$(1,0)$ vector fields at $p$,
+such that $L$ is Levi-orthogonal to each $\2L^j$, $j=1,\ldots,q$,
+in a neighborhood of $p$.
+Then $L$ is in the Levi kernel up to order $1$ at $p$.
+\el
+
+
+\bpf
+The first part follows directly from the definitions.
+
+Vice versa, since the Levi form has rank $r$ in $p$,
+and $L_p$ is Levi-orthogonal to each $\2L^j$,
+it follows that $L_p$ is in the Levi kernel, i.e.\
+the first expression in \eqref{1-ker} must vanish.
+
+Next, \eqref{3-vanish}
+implies that the second expression in \eqref{1-ker}
+vanishes whenever $L^1_p\in K^{10}_p$.
+Similarly, in view of the symmetry \eqref{3-sym},
+also the third expression vanishes
+under the same assumption.
+
+Finally, to a general $L^1$ with $L^1_p\notin K^{10}_p$,
+we can always add a linear combination of $\2L^j$
+to achieve the inclusion of the value at $p$ in the Levi kernel.
+Since $L$ is Levi-orthogonal to each $\2L^j$ identically in a neighborhood of $p$,
+this does not change \eqref{1-ker},
+completing the proof.
+\epf
+
+In particular, in view of Lemma~\ref{psc-vanish} we obtain:
+
+\bc\Label{gen-pt}
+Let $M$ be pseudoconvex.
+Then every $v\in K^{10}_p$
+extends to a $(1,0)$ vector field,
+which is in the Levi kernel up to order $1$ at $p$.
+\ec
+
+\br
+More generally, a similar result
+can be obtained without pseudoconvexity
+for a $v\in K^{10}_p$ 
+whose conjugate $\1v$ is in the (right) kernel of $\t^3$, 
+i.e.\ satisfying 
+$$
+	\t^3_p(L^3_p, L^2_p, \1v) = 0
+$$
+for all $L^3$, $L^2$.
+Then there exists a $(0,1)$ vector field $\1L$ extension of  $\1v$,
+which is in the Levi kernel up to order $1$ at $p$.
+\er
+
+
+
+\subsection{Invariant submodule sheaves of vector fields}
+\Label{submodules}
+%To better formalise the underlying structure
+The notion of the {\em Levi kernel inclusion up to order $1$} 
+has been defined pointwise in Definition~\ref{ker-1}.
+In order to have a uniform control for 
+Levi kernels in nearby points,
+we shall need to define
+corresponding sheafs of vector field submodules as follows. 
+%Consider the sheaf of all smooth vector fields regarded
+%as a module over the sheaf of all smooth functions.
+
+\bd\Label{q-sheaf}
+Let $M\subset \C^n$ be a real hypersurface.
+Denote by $\6T^{10}$ the sheaf of all 
+ $(1,0)$ vector fields on $M$.
+For every $q\le n-1$,
+define $\2{\6S}^{10}(q)\subset \6T^{10}$ to be the submodule sheaf
+consisting of all vector fields on $M$ which are
+contained in the Levi kernel up to order $1$
+ at every point of Levi rank $\le q$.
+\ed
+
+As a direct consequence of Lemma~\ref{1-ker-def},
+we obtain the following strengthening of Corollary~\ref{gen-pt}:
+\bc\Label{q-sheaf-sect}
+Let $M$ be a pseudoconvex hypersurface.
+%and $p\in M$ a point of Levi rank $q$.
+Then for every $q$, local sections of $\2{\6S}^{10}(q)$
+%vanish at all points of Levi rank $\le q$ and
+span the Levi kernel $K^{10}_x$
+at every point $x\in M$ of Levi rank $q$.
+\ec
+
+Note that to guarantee the existence of
+sufficiently many sections as in 
+Corollary~\ref{q-sheaf-sect},
+ it is important to restrict
+the property underlying Definition~\ref{q-sheaf}
+only to points of Levi rank $\le q$.
+Without that restriction, 
+the sheaf would become trivial
+e.g.\ for any
+manifold $M$ that is generically 
+Levi-nondegenerate
+(which is the case for any $M$ of finite type).
+
+Definition~\ref{q-sheaf}
+requires to check the condition at eery point of Levi rank $\le q$,
+which may be difficult to deal with in practice.
+Analysing the proof we arrive at the smaller submodule sheaf
+$\6S^{10}(q)$ (as defined in Theorem~\ref{main}, part (6)):
+
+\bd\Label{vanish-level}
+Define the submodule sheaf $\6S^{10}(q)$
+to be generated by all $(1,0)$ vector fields $L$
+satisfying $L\in V_L^\perp$,
+with $V_L\subset H^{10}$
+a Levi-nondegenerate subbundle
+of rank $q$ in a neighborhood of $p$.
+\ed
+
+Then Lemma~\ref{1-ker-def} yelds all the needed properties:
+
+\bc\Label{span-ker}
+Under the same assumptions as in Corollary~\ref{q-sheaf-sect},
+for every $q$,
+$\6S^{10}(q)$ is a submodule sheaf of $\2{\6S}^{10}(q)$,
+which has its local sections also
+span the Levi kernel $K^{10}_x$
+at every point $x\in M$ of Levi rank $q$.
+\ec
+
+
+
+%\section{}
+
+\subsection{Construction of the quartic tensor}
+\Label{quartic}
+%Since $\2\t$ is obtained by differentiating the Levi form (up to a constant),
+%we shall also write $D\l_p:=\2\t$.
+Equipped with special vector fields as in Definition~\ref{ker-1},
+we can now define an invariant quartic tensor
+via second order derivatives of the Levi form:
+
+\bl\Label{d2}
+Let $M$ be such that the cubic tensor $\t^3_p$ vanishes for some $p\in M$.
+Then there exists an unique tensor
+$$
+	\t^4_p \colon  \C T_p \times \C T_p 
+	\times K^{10}_p\times \1{K^{10}_p} \to \C Q_p,
+$$
+such that for any $(1,0)$ vector fields
+$\1{L^1}, L^2\in H^{10}$ that are in the Levi kernel
+up to order $1$ at $p$,
+any vector fields $L^3, L^4\in \C T$,
+and any contact form $\th\in \Om^0$,
+\beq\Label{1-levi'}
+	\la \th_p, \t^4_p(L^4_p, L^3_p, L^2_p, L^1_p)\ra 
+	= -i(L^4 L^3 \la \th, [L^2, L^1]\ra)_p.
+\eeq
+
+More generally, \eqref{1-levi'} still holds
+whenever both $\1L^1$ and $L^2$
+are in the Levi kernel
+up to $L^j_p$-order $1$ at $p$, for $j=3,4$.
+\el
+
+\bpf
+Similar to the proof of Lemma~\ref{bracket-tensor},
+it suffices to prove that the right-hand side of \eqref{1-levi'}
+vanishes whenever
+either $L^k=a\2L^k$ for some $k=1,2,3,4$, 
+or $\th = a\2\th$, where $a$ is a smooth function vanishing at $p$.
+In the following $\2a$ will denote either $a$ or the conjugate $\1a$
+and we assume (without loss of generality)
+that each of $L^3, L^4$
+is contained in either $H^{10}$ or $H^{01}$.
+
+Now the vanishing of the right-hand side in \eqref{1-levi'} 
+is obvious for $k=4$.
+For $k=3$, it takes
+the form
+$$
+	(L^4\2a)_p (\2L^3 \la \th, [L^2, L^1] \ra)_p,	
+$$
+which must vanish in view of Definition~\ref{ker-1}.
+For $k=1$, we obtain
+$$
+	(L^4 \bar a)_p (L^3 \la \th, [L^2, \2L^1] \ra)_p
+	+ 	(L^3 \bar a)_p (L^4 \la \th, [L^2, \2L^1] \ra)_p
+	+ 	(L^4 L^3 \bar a)_p (\la \th, [L^2, \2L^1] \ra)_p
+	,
+$$
+which again vanishes in view of Definition~\ref{ker-1}.
+For $k=2$, the proof follows from the case $k=1$
+by exchanging $L^2$ and $L^1$ and conjugating.
+Finally, for $\th = a \2\th$, we obtain
+$$
+	(L^4 a)_p (L^3 \la \2\th, [L^2, L^1] \ra)_p
+	+ 	(L^3 a)_p (L^4 \la \2\th, [L^2, L^1] \ra)_p
+	+ 	(L^4 L^3 a)_p (\la \2\th, [L^2, L^1] \ra)_p,
+$$
+which vanishes by the same argument.
+\epf
+
+
+\br
+In higher generality, when the cubic tensor $\t^3_p$ may not vanish completely,
+a quartic tensor $\t^4_p$ can still be constructed via \eqref{1-levi'} 
+along certain kernels of $\t^3_p$.
+We will not pursue this direction as our focus here is on 
+the pseudoconvex case when $\t^3_p$ always vanishes identically.
+\er
+
+
+
+
+
+
+
+\subsection{A normal form up to weight $1/4$}
+Since the cubic normal form for pseudoconvex hypersurfaces \eqref{psc-cubic-red}
+is in some sense lacking nondegenerate terms, 
+we extend it by lowering the weight of $z_3$ from $1/3$ to $1/4$
+(an renaming $z_3$ to $z_4$):
+
+\bp\Label{4-normal}
+For every pseudoconvex real hypersurface $M$ in $\C^{n}$ 
+and point $p\in M$ of Levi rank $q$, 
+there exist local holomorphic coordinates 
+$$
+	(w,z)=(w,z_2, z_3)\in \C\times \C^q\times \C^{n-q-1},
+$$ 
+vanishing at $p$,
+where $M$ takes the form
+\beq\Label{phi24}
+	w+ \w = \phi(z,\z , i(w-\w)), 
+	\quad
+	\phi = \phi_2 + \phi_4 + o_w(1), 
+\eeq
+where
+$$
+	\phi_2(z,\z,u) = \sum_{j=1}^q |z_{2j}|^2,
+	\quad
+	\phi_4(z,\z,u) = 2\Re \phi_{31}(z_4,\z_4) + \phi_{22}(z_4,\z_4),
+$$
+such that the weight estimate $o_w$ is calculated for $u$, $z_{2j}$, $z_{4k}$, and their conjugates, 
+having weights 
+$1$, $\frac12$, $\frac14$ respectively.
+Here each polynomial $\phi_{jk}$ is bihomogenous of bidegree $(j,k)$ in its arguments.
+
+Furthermore, the following hold:
+\begin{enumerate}
+\item
+For every 
+$v\in K^{10}_0\cong \{0\} \times \{0\} \times \C^{n-q-1}$, 
+the vector field $L_v$ given by \eqref{lv} is 
+in the Levi kernel up to $v^0$-order $1$ at $0$
+for any $v^0\in \C K_0$.
+\item
+For $v^4, v^3\in \C K_0$
+and
+$v^2, \1v^1\in K^{10}_0$,
+we have
+\beq\Label{phi-diff}
+	\t^4_p(v^4, v^3, v^2, v^1) 
+	= \d_{v^4} \d_{v^3} \d_{v^2} \d_{v^1} \phi_4.
+\eeq
+%
+%Finally, the polarization of $\phi_4$ defines 
+%an invariant tensor 
+%$$(\C K_p)^4 \to \C Q_p, $$
+%whose restriction to $$(\C K_p)^2 \times K^{10}_p\times \1{K^{10}_p}$$
+%coincides up a nonzero constant with corresponding restriction of $D^2\l_p$.
+In particular, the restriction
+\beq\Label{t40}
+	\t^{40}_p \colon \C K_p\times  \C K_p \times K^{10}_p\times \1{K^{10}_p} \to \C Q_p
+\eeq 
+of $\t^4_p$ is symmetric whenever its arguments can be interchanged
+and satisfies the reality condition
+$$
+	\1{\t^4_p(v^4, v^3, v^2, v^1)}
+	=
+	\t^4_p(\1v^4, \1v^3, \1v^1, \1v^2).
+$$
+\end{enumerate}
+\ep
+
+\bpf
+The existence of the desired normal form 
+is a direct consequence of Lemma~\ref{psc-vanish}.
+A direct calculation shows the special vector fields in \eqref{lv}
+with $v\in \{0\} \times \{0\} \times \C^{n-q-1}$ are in the Levi kernel up to tangential order $1$
+as claimed.
+The remaining properties are straightforward. 
+\epf
+
+
+Similarly to Corollary~\ref{3-calc},
+one can also show the following quartic Lie bracket
+representation of the restriction 
+\eqref{t40}:
+\bl
+The restriction $\t^{40}_q$
+%$$
+%	\t^{40}_p \colon  \C H_p \times \C H_p 
+%	\times K^{10}_p\times \1{K^{10}_p} \to \C Q_p
+%$$
+satisfies
+$$
+%	\beq\Label{1-levi'}
+	\la \th_p, \t^{41}_p(L^4_p, L^3_p, L^2_p, L^1_p)\ra 
+	= -i\la \th_p, [L^4, [L^3, [L^2, L^1]]]_p\ra
+%\eeq
+$$
+whenever $L^2, \1L^1\in H^{10}$ are in the Levi kernel
+up to $\C K$-order $1$ at $p$, $L^3, L^4\in \C H$,
+and $\th\in \Om^0$ is any contact form.
+\el
+
+
+\br
+It is easy to see that pseudoconvexity of $M$ implies that the quartic polynomial 
+$\phi_4(z_3,\z_3)$ in \eqref{phi24} is plurisubharmonic. 
+Conversely, every plurisubharmonic $\phi_4$ appears
+in a normal form of some pseudoconvex hypersurface,
+e.g.\ the model hypersurface 
+$$
+	w+ \w = \sum_{j=1}^q |z_{2j}|^2  + \phi_4(z_4, \z_4).
+$$
+%It is, however, not true that 
+\er
+
+\subsection{Symmetric extension}
+Similarly to Lemma~\ref{3-symm}, we obtain a symmetric extension
+for the Levi kernel restriction of $\t^4$:
+\bl\Label{4-symm}
+The restriction 
+$$
+	\t^{40}_p \colon \C K_p\times  \C K_p \times K^{10}_p\times \1{K^{10}_p} \to \C Q_p
+$$ 
+of the quartic tensor $\t^4_p$
+ admits an unique symmetric extension
+$$
+	\2\t^{40}_p \colon
+	\C K_p \times \C K_p\times \C K_p \times \C K_p \to \C Q_p,
+$$
+satisfying
+\beq\Label{tensor-dif}
+	\la \th_0,  \2\t^{40}_0(v^4, v^3, v^2, v^1) \ra
+	= \d_{v^4} \d_{v^3} \d_{v^2} \d_{v^1} \phi_4,
+\eeq
+whenever $M$ is in a normal form $\rho= -2\Re w +\phi=0$
+as in Proposition~\ref{4-normal}
+and $\th = i\d\rho$.
+In fact, \eqref{tensor-dif}
+holds whenever
+$\phi$
+satisfies $d\phi_0=0$
+and 
+$ \d_{v^j} \d_{v^2} \d_{v^1} \phi_3=0$
+for $j=3,4$.
+\el
+
+
+
+
+\section{Applications and properties of the quartic tensor}
+
+\subsection{Relation with the D'Angelo finite type}
+The quartic tensor $\t^4$ can be used to completely characterize
+the finite type up to $4$ in the sense of D'Angelo~\cite{D82}
+(the last property is related to D'Angelo's ``Property P'', see \cite[Definition~5.1]{D82}):
+%We shall use the following standard lemma:
+%\bl
+%Let $p(z,\z)$ be a homogeneous polynomial of degree $4$ in $(z, \z)\in \C\times \C$.
+%Suppose $p$ is plurisubharmonic.
+%Then 
+%$$
+%	p(z,\bar z) + \Re h(z) \ge 0
+%$$
+%holds for a suitable holomorphic polynomial $h$ of degree $4$.
+%\el
+%\bpf
+%
+%\epf
+
+\bp\Label{type-quartic}
+Let $M$ be a pseudoconvex hypersurface
+with nontrivial Levi kernel at $p$.
+Then $M$ is of D'Angelo type $4$ at $p$
+if and only if for every nonzero vector $v\in K^{10}_p$, the tensor $\t^4_p$
+does not vanish when restricted to 
+\beq\Label{v-res}
+	(\C v + \C \1v) \times (\C v + \C \1v) \times \C v\times \C \1v.
+\eeq
+In fact, the latter property implies the following stronger nonvanishing conclusion:
+$$
+	\t^4_p(v,\1v, v, \1v) \ne 0.
+$$
+\ep
+
+\bpf
+We may assume $M$ is put into its normal form as in Proposition~\ref{4-normal}.
+
+If the restriction of $\t^4_p$ vanishes on \eqref{v-res} for some $v\ne 0$,
+we may assume $v=\d_{z_{31}}$, where $z_3=(z_{31},\ldots, z_{3,n-r})$.
+Then it follows from the normal form that the line $\C v$ has order of contact with $M$
+higher than $4$, hence the D'Angelo type at $p$ is also higher than $4$.
+
+On the other hand, suppose the restriction of $\t^4_p$ to \eqref{v-res} does not vanish for any 
+$v\ne 0$. Assume by contradiction, 
+there exists a nontrivial holomorphic curve 
+$$
+	\g\colon (\C,0) \to (\C^{n+1},0),
+	\quad
+	\g(t) = \sum_{k\ge k_0} a_k t^k,
+	\quad 
+	a_{k_0}\ne 0,
+$$
+whose contact order with $M$ at $0$ is higher than $4$.
+Recall that the contact order is given by
+$$
+	\frac{\nu(\rho\circ\g)}{\nu(\g)},
+$$
+where $\rho$ is any defining function of $M$ and $\nu$ is the vanishing order at $0$,
+in particular, $\nu(\g) = k_0\ge 1$.
+Taking $\rho := -2\Re w +\phi$, we must have $a_{k_0}\in \{0\} \times \C^n$,
+otherwise the contact order would be $1$.
+Similarly, expanding $\rho\circ \g$, it follows by induction that 
+$$
+	a_{l}\in \{0\} \times \C^{n},
+	\quad
+	l< 4k_0,
+$$
+and
+$$
+	a_{k}\in \{0\} \times \{0\} \times \C^{n-r},
+	\quad
+	k< 2k_0,
+$$
+for otherwise the contact order would be less than $4$.
+Finally collecting terms of order $4k_0$
+and using our assumption that the contact order is greater than $4$,
+we obtain
+\beq\Label{4k}
+ 	\phi_2(a_{2k_0} t^{2k_0}, \1a_{2k_0} \1t^{2k_0} ) + \phi_4(a_{k_0} t^{k_0}, \1a_{k_0}\1t^{k_0}) =0.
+\eeq
+In particular, it follows that 
+$$
+	\phi_4(a_{k_0} \xi, \1a_{k_0}\1\xi) = c\xi^2\bar\xi^2.
+$$
+Since $\phi_4$ is plurisubharmonic, we must have $c\ge 0$.
+Hence both terms in \eqref{4k} are nonnegative,
+and therefore must vanish.
+In particular, 
+$
+	c a_{k_0}^2 \1a_{k_0}^2 = 0,
+$
+implying 
+$$
+	\phi_4(a_{k_0} \xi, \1a_{k_0}\1\xi) = 0,
+$$
+which is in contradiction with our nonvanishing assumption on $\t^4_p$.
+Hence the D'Angelo type is $4$ completing the proof of the converse direction.
+
+Finally, the last statement follows from the plurisubharmonicity of $\phi_4$
+in any normal form.
+\epf
+
+
+The pseudoconvexity assumption in Proposition~\ref{type-quartic} cannot be dropped:
+
+\be
+Let $M\subset \C^3_{w, z_1, z_2}$ be given by
+$$
+	2\Re w = |z_1|^2 - |z_2|^4.
+$$
+Then $M$ contains the image of the curve $t\mapsto (0, t^2, t)$ 
+and is hence of infinite type at $0$.
+On the other hand, $M$ is in the normal form \eqref{phi24}
+and hence $\t^4_0(v, \1v, v, \1v)\ne 0$  for any $v\ne0\in K^{10}_0$.
+\ee
+
+\subsection{Uniformity of the quartic tensor}
+The sheaves  $\6S^{10}(q)$
+introduced in Definition~\ref{vanish-level}
+ can be used to 
+obtain a uniform behavior of 
+$\t^4_p$ as $p$ varies
+over the set of nearby points
+of bounded Levi rank.
+In fact, as direct consequence
+from the definition and Corollary~\ref{span-ker}, 
+we obtain
+that  $\t^4_p$
+can be calculated using local sections of $\6S^{10}(q)$:
+\bc\Label{uni-t4}
+For every 
+vector fields $L^4, L^3\in \C T$
+and $L^2, \1L^1\in \6S^{10}(q)$
+defined in an open set $U\subset M$,
+the identity 
+\eqref{1-levi'} holds
+simultaneously
+for all points $p\in U$
+of Levi rank $q$.
+\ec
+
+
+\br
+In the context of Corollary~\ref{uni-t4},
+it is essential to require the vector fields $L^2, L^1$
+to be contained in Levi kernels up order $1$ (rather than merely contained there).
+In fact, for a higher order perturbation of Examples~\ref{ex-4} where 
+$0$ is the only Levi-degenerate point, 
+choosing vector fields $L^j$ as higher order perturbations of
+the vector field $L$ in the example or its conjugate
+would violate \eqref{1-levi'}.
+\er
+
+
+It is important to note that the conclusion of Corollary~\ref{uni-t4}
+may not hold for points $p\in U$ of Levi rank $>q$
+when $L^2_p, \1L^1_p\in K^{10}_p$.
+In fact, $\t^4_p$ may not even be continuous 
+e.g. may vanish for $p$ of higher Levi rank even when $\t^4_{p_0}$ does not vanish 
+on any line for $p_0$ of Levi rank $q$.
+This is illustrated by D'Angelo's celebrated example 
+where the finite type is not upper-semicontinuous \cite{D80, D82}:
+
+
+\be[J. P. D'Angelo]\Label{da-ex}
+Let $M\subset\C^3_{w, z_1, z_2}$ be given by
+$$
+	2\Re w = |z_1^2 - w z_2|^2 + |z_2|^4.
+$$
+Then $M$ is of Levi rank $0$ and finite type $4$ at $0$ and hence $\t^4_0$ does not vanish on the lines 
+products \eqref{v-res} in view of Proposition~\ref{type-quartic}.
+In fact, $M$ is in its normal form as in Proposition~\ref{4-normal} with
+$\phi_4 = |z_1|^4 + |z_2|^4$, and hence 
+$$
+	\t^4_0(v, \1v, v, \1v) = 4(|v_1|^4 + |v_2|^4),
+	\quad v\in K^{10}_0 \cong \{0\} \times C^2_{z_1, z_2}.
+$$
+
+On the other hand, at every $p=(it, 0, 0)$ on the imaginary axis with $t\ne 0$,
+the Levi rank is $1$, and $M$ can be locally transformed into a normal form 
+\eqref{phi24} with vanishing $\phi_4$ implying $\t^4_p(v, \1v, v, \1v)=0$
+for any $v\in K^{10}_p$. Thus $\t^4_p(v, \1v, v, \1v)$ cannot be continuous
+for any $v=v(p)$ converging to any $v(0)\ne 0$
+as $p\to 0$.
+
+Of course, this phenomenon is closely related to the lack of upper-semicontinuity of the type
+demonstrated by D'Angelo.
+\ee
+
+
+
+\subsection{Kernels of quartic tensors}
+For any homogenous polynomial, consider the following notion of
+holomorphic kernel:
+\bd
+	The {\em holomorphic kernel of a homogeneous polynomial} 
+	$P(z,\bar z)$, $z\in \C^n$, 
+	is defined to be the subspace of all $(1,0)$ vectors $v$ such that
+	\beq\Label{kernel-def}
+		\d_v P(z,\z) \equiv \d_{\1v}P(z,\z) \equiv 0.
+	\eeq
+	Equivalently, the holomorphic kernel is the space of all $v$
+	such that both $v$ and $\1v$ belong to the kernel 
+	of the polarization of $p$.
+%	The $(0,1)$ kernel is the conjugate of the $(1,0)$ kernel,
+%	and the {\em (total) kernel} is the sum of both $(1,0)$ and $(0,1)$ kernels.
+\ed
+It is straightforward to see the following simple characterization of the kernel:
+\bl\Label{ker-coor}
+	The holomorphic kernel of $p$ is the maximal subspace $V$ such that,
+	there exists a linear change of coordinates such that
+	$$V= \oplus_{j=1}^l (\C \d_{z_j} \oplus \C \d_{\z_j})$$
+	and $P(z,\z)$ is independent of the variables $z_1,\ldots, z_l$ and their conjugates.
+\el
+
+\bd\Label{rank}
+	The {\em rank} of $P$ is $n-d$, where $d$ is the dimension of the holomorphic kernel.
+\ed
+
+Also separating bihomogeneous components in \eqref{kernel-def}, we obtain:
+\bl
+	Let 
+	$$
+		P(z,\z)=\sum P_{kl}(z,\z)
+	$$ 
+	be a decomposition into components $P_{kl}$ of bidegree $(k,l)$ in $(z,\z)$.
+	Then the holomorphic kernel of $P$ equals the intersection of kernels of $P_{kl}$ for all $k,l$.
+\el
+
+Next we compare the holomorphic kernel of the polynomial $\phi_4$
+in the normal form given by Proposition~\ref{4-normal}
+and the restriction 
+$$
+	\t^{40}_p \colon \C K_p \times \C K_p \times K^{10}_p \times \1{K^{10}_p} \to \C Q_p.
+$$
+of the quartic tensor $\t^4_p$.
+
+\bd
+The {\em holomorphic kernel} of $\t^{40}_p$ is 
+$V\cap \1V$, where
+$$
+	V = \ker \t^{40}_p = \{ v\in \C K_p : 
+		\t^{40}_p(v, v^3, v^2, v^1) =0
+		\text{ for all }
+		v^3, v^2, v^1\}.
+$$
+\ed
+
+First of all, remark that 
+without pseudoconvexity assumption,
+the holomorphic kernel of $\t^{40}_p$
+may get larger than that of $\phi_4$:
+\be\Label{diff-kernels}
+Let $M\subset \C^3_{w, z_1, z_2}$ be given by
+$$
+	2\Re w = \phi_4(z,\z):= 2\Re (z_1^3 \z_2).
+$$
+Then the arguments in the proof of Proposition~\ref{4-normal}
+can be used to show that \eqref{phi-diff} still holds,
+%i.e.\
+%$$
+%	\t^{40}_0 = c dz_3 \otimes dz_3 \otimes d_z
+%$$
+implying that $\d_{z_2}$ and $\d_{\z_2}$
+are in the kernel of $\t^{40}_0$
+in the $1$st and $2$nd arguments
+but not in the $3$rd one.
+\ee
+
+On the other hand, in presence of pseudoconvexity,
+both kernels must coincide as the following lemma shows.
+As a matter of convention, for a multilinear function 
+$f(v^1, \ldots, v^m)$, we call its kernel in the $k$th argument
+the space of all $v^k$ such that $f(v^1, \ldots, v^m)=0$ holds
+for all $v^j$ with $j\ne k$.
+
+\bl\Label{ker-rel}
+	Let $M$ be in its normal form given by Proposition~\ref{4-normal},
+	and
+	assume that $M$ is pseudoconvex.
+	Then both holomorphic kernels of $\t^{40}$ in the $1$st and $2$nd arguments coincide with holomorphic kernel 
+	$V$ of $\phi_4$.
+	Furthermore,
+	the kernels of $\t^{40}$ in the $3$rd and $4$th arguments
+	 coincide respectively with $V$ and $\1V$.
+\el
+
+
+\bpf
+As direct consequence of \eqref{phi-diff} we obtain
+that the holomorphic kernel of $\phi_4$ is contained
+in the kernel of $\t^{40}_p$ in each argument.
+
+Vice versa, let $v$ be $(1,0)$ vector in the holomoprhic 
+kernel of $\t^{40}_p$ (in the $1$st argument).
+We write $\xi=z_4$ for brevity.
+After a linear change of coordinates we may assume 
+$v=\d_{\xi_1}$, where $\xi_1$ is the first component of $\xi$
+in the notation of Proposition~\ref{4-normal}.
+Then it follows from \eqref{phi-diff} that
+$\d_{\xi_1} \phi_4$ is harmonic.
+Since $\phi_4$ has no harmonic terms, it must have the form
+$$
+	\phi_4 = 2\Re (\bar\xi_1 h(\xi)) + R,
+$$
+where $h$ is holomorphic and $R$ is independent of $\xi_1$.
+Now since $M$ is pseudoconvex, $\phi_4$ is plurisubharmonic,
+in particular,
+\beq\Label{t}
+	(\d_{\xi_1} + t \d_{\xi_j}) (\d_{\bar\xi_1} + t \d_{\bar\xi_j}) 
+	\phi_4 \ge 0
+\eeq
+holds for all $t\in \R$.
+Then for $t=0$, we obtain $\d_{\xi_1}h\ge 0$.
+Since $h$ is holomorphic, we must have $\d_{\xi_1}h \equiv 0$.
+Hence the linear part of \eqref{t} must be $\ge 0$
+and therefore equal to $0$, since $t$ is any real number.
+But this means $h\equiv 0$, and hence $v=\d_{\xi_1}$ is in the 
+holomorphic kernel of $\phi_4$ as claimed.
+
+The claimed statements for kernels in other arguments of $\t^{40}_p$
+are obtained by 
+repeating the same proof. 
+\epf
+
+In view of Lemma~\ref{ker-rel},
+we simply refer to the {\em holomorphc kernel of $\t^{40}$}
+for its kernel in the $1$st (and, equivalently, in the $2$nd) argument,
+%and to  {\em $(1,0)$ and $(0,1)$ kernels of $\t^{40}$} for 
+%its $(1,0)$ and $(0,1)$ components.
+Also the {\em rank of $\t^{40}$} is 
+$\dim K^{10}_p - d$,
+where $d$ is the dimension of its holomorphic kernel,
+which coincides with the rank of $\phi_4$
+in the sense of Definition~\ref{rank}.
+
+
+
+\subsection{Relation with Catlin's multitype}
+\Label{m-type}
+Recall that the multitype of $M\subset \C^{n+1}$ at $p$
+is the lexicographically maximal
+$$
+	\L = (\l_1, \ldots, \l_{n+1}), 
+	\quad
+	\l_1 \ge \ldots \ge \l_{n+1},
+$$
+such that a defining function $\rho$ of $M$ 
+satisfies 
+\beq\Label{rho-wt}
+	\rho = O_w(1)
+\eeq
+for a choice of holomorphic coordinates 
+$(z_1, \ldots, z_{n+1})$,
+which together with their conjugates are assigned 
+respectively the weights 
+$(\l_1^{-1}, \ldots, \l_{n+1}^{-1})$.
+
+The main problem with multitype
+is that for a given coordinate representation,
+it is difficult to know whether concrete weights
+actually realize their lexicographic maximum.
+We now give a simple way of calculating a part 
+of the multitype in terms of the rank of the tensor $\t_4$.
+In case $\t_4$ has trivial kernel, that gives the complete multitype.
+
+\bp\Label{multi-quartic}
+Let $M\subset \C^{n}$ be a pseudoconvex hypersurface,
+and $p\in M$ a point with Levi form of rank $q_2$ 
+and the restricted quartic tensor $\t^{40}$ of rank $q_4$.
+Then the multitype $\L = (\l_1, \ldots, \l_{n})$ of $M$ at $p$
+satisfies
+\beq\Label{wt-eq}
+	\l_1 = 1, 
+	\quad
+	\l_2 = \ldots \l_{q_2+1} =2, 
+	\quad
+	\l_{q_2+2} = \ldots = \l_{q_2 + q_4 +1} = 4,
+\eeq
+and 	
+\beq\Label{wt-ineq}
+	\l_k > 4, \quad k> q_2 + q_4 +1.
+\eeq
+
+In particular, if $\t^{40}$ has only trivial kernel,
+the multitype is
+$(1, 2,\ldots, 2, 4, \ldots, 4)$,
+where the number of $2$'s equals the Levi rank.
+\ep
+
+\bpf
+By Lemma~\ref{ker-coor}, 
+in addition to the normal form in Proposition~\ref{4-normal},
+we can make $\phi_4$ independent of the last $d$ coordinates,
+where $d$ is the dimension of the $(1,0)$ kernel of $\t_4$.
+This shows that it is possible to achieve 
+\eqref{rho-wt}
+with weights
+satisfying both \eqref{wt-eq} and \eqref{wt-ineq}.
+
+The actual multitype may only be lexicographically higher,
+in particular, \eqref{wt-ineq} is already satisfied.
+Assume by contradiction that we have another choice of coordinates 
+with higher weights failing one of the equalities in \eqref{wt-eq}.
+However, we must obviously have $\l_1=1$
+and the Levi form invariance forces the next $q_2$ weights to be equal $2$.
+Therefore we must have some $\l_k > 4$ for $k\le q_2+q_4+1$.
+In those coordinates, we would have the same normal form as in Proposition~\ref{4-normal}
+with $\phi_4$ being independent of $z_j$ at least for $j\ge q_2 + q_4 +1$.
+That, however, would mean that the rank of $\t_4$ is less than $q_4$, which is a contradiction.
+Hence the multitype must satisfy all of \eqref{wt-eq} as claimed.
+\epf
+
+
+
+
+\section{Ideal sheaves for Levi rank level sets}\Label{ideal}
+
+We use the vector field submodule 
+sheaves $\6S^{10}(q)$ in Definition~\ref{vanish-level}
+to define invariant ideal sheaves of smooth functions 
+$\6I(q)$ (as in Theorem~\ref{main}, part (5)):
+%vanishing on the Levi rank level sets:
+
+
+%
+%\bd
+%Define $q$th {\em sublevel ideal sheaf} $\6I(q)$
+%to be the ideal sheaf generated by 
+%%real and imaginary parts of the 
+%functions of the form
+%$$
+%	f_{L^3, L^2, L^1, \th}:=  L^3 \la \th, [L^2, L^1] \ra,
+%	\quad
+%	L^3\in \C T, 
+%	\quad
+%	L^2, \1L^1 \in \6S^{10}(q),
+%	\quad
+%	\th \in \Om^0.
+%$$
+%\ed
+%
+%
+%
+%Using sections of $\6S^{10}(q)$ we define
+%the invariant ideal sheaf 
+%$\6I(q)$ (as in Theorem~\ref{main}, part (5)):
+
+\bd
+Let $M\subset\cn$ be a pseudoconvex hypersurface.
+For every $q$,
+define $\6I(q)$ to be the ideal sheaf 
+generated by all (smooth complex) functions $f$ of the form
+$$
+	f = L^3 \la \th, [L^2, L^1] \ra,
+	\quad 
+$$
+where $\th\in\Om^0$ is a contact form, 
+$L^3\in \C T$ arbitrary complex vector field,
+and $L^2, \1L^1 \in \6S^{10}(q)$
+arbitrary sections.
+\ed
+
+As direct consequence of Corollary~\ref{span-ker} and 
+Lemma~\ref{psc-vanish}, we obtain
+a general way of constructing submanifolds
+containing level sets of Levi rank:
+
+\bc\Label{iq-van}
+Let $M$ be a pseudoconvex hypersurface.
+Then every local section in $\6I(q)$
+vanishes at all points of Levi rank $q$.
+In particular, for any collection $f^1, \ldots, f^m$
+of real functions from the real part $\Re \6I(q)$
+defined in an open set $U\subset M$
+satisfying 
+$$
+	df^1 \wedge \ldots \wedge df^m\ne 0,
+$$
+the submanifold
+$$
+	S = \{ f^1 = \ldots = f^m =0 \}
+$$
+contains the set of all points of Levi rank $q$ in $U$.
+\ec
+
+\br
+Note that due to our definition of $\6I(q)$,
+any complex multiple of a local section is again a local section.
+Consequently, it suffices to take only sections in $\Re \6I(q)$
+to define the same set.
+\er
+
+
+We next apply the quartic tensor to describe the differentials
+of sections in $\6I(q)$.
+
+\bd
+For an ideal sheaf $\6I$ define it {\em kernel} at $p$
+$$
+	\ker_p \6I \subset \C T_p,
+$$
+to be the intersection of kernels of all differentials $df_p$,
+where $f$ is any local section of $\6I$ in a neighborhood of $p$.
+\ed
+
+Then Corollary~\ref{iq-van} implies:
+
+\bl
+Let $p\in M$ be a point of Levi rank $q$.
+Then the kernel of the $q$th sublevel ideal $\6I(q)$ at $p$
+coincides with the kernel of the quartic tensor $\t^4_p$.
+\el
+
+We can now summarize this paragraph's results as follows:
+
+\bp\Label{main0}
+Let $M\subset\cn$ be a pseudoconvex real hypersurface,
+and $p\in M$ a point of Levi rank $q$.
+%and the restricted quartic tensor $\t^{40}_p$
+%of corank $q_4$.
+Then in a neighborhood of $p$, 
+the set 
+%$$\{\rk \l^2_x $$
+ of all points of the same Levi rank $q$
+is contained in a real submanifold $S\subset M$
+%of holomorphic dimension at most $q_4$ 
+through $p$ such that
+%whose tangent space at $p$
+%coincides with the kernel of 
+$$
+	T_p S = \ker \t^4_p,
+$$
+and $S$ is given by the vanishing 
+of local sections
+$$
+	f^1, \ldots, f^m \in \6I(q),
+	\quad
+	df^1\wedge \ldots \wedge df^m \ne 0.
+$$
+%
+%Suppose that the multitype at $p\in M$,
+%$\6M(p ) = (\l_1, \ldots, \l_n)$  
+%satisfies $\l_j\le 4$ for $j\le n-q$.
+In particular, when $M$ of finite type $4$ at $p$,
+the intersection of $T_pS$
+with the Levi kernel at $p$ is totally real.
+\ep
+
+%
+%\bc
+%In the setting of Theorem~\ref{main},
+%suppose that the multitype
+%$$
+%	\6M(p ) = (m_1, \ldots, m_n)
+%$$ 
+%satisfies $m_l \le 4$ for some $l$.
+%Then 
+%\ec
+%
+
+
+%\bc
+%Let $M\subset\cn$ be a pseudoconvex real hypersurface
+%of finite type $4$.
+%Then $M$ is a disjoint union of CR submanifolds
+%$$
+%	M = M_0 \cup \ldots M_{n-1}
+%$$
+%such that each $M_q$ 
+%\ec
+
+
+
+\section{Relation with Catlin's boundary systems}\Label{bs}
+\subsection{Maximal Levi-nondegenerate subbundle}
+
+
+%\subsection{Relation with Catlin's boundary systems}
+%Let $M$ be pseudoconvex with Levi rank $q$ at $p\in M$.
+
+Recall that {\em Catlin's boundary system} construction
+for a hypersurface $M$ at a point $p\in M$
+begins with a maximal collection of $(1,0)$ vector fields $L_2, \ldots, L_{q+1}$ tangent to $M$
+such that the Levi form matrix 
+$$
+	(\la \th,  [L_j, \1L_k] \ra)_{2\le j,k \le q}
+$$
+is nonsingular. In particular, $q$ must be equal to the Levi rank at $p$.
+
+Invariantly, consider any {\em maximal Levi-nondegenerate subbundle} through $p$,
+i.e.\ any smooth subbundle  $V^{10} \subset H^{10}$ where the restriction of the Levi form is nondegenerate. 
+Then obviously any such $V^{10}$ appears as the span
+of the first $q$ vector fields in Catlin's boundary system,
+and vice versa, every such span is a maximal Levi-nondegenerate subbundle.
+%
+%the span
+%$$
+%	V^{10}:= \C L_2 + \ldots + \C L_{q+1}
+%$$
+%as 
+%%is any complex subbundle of maximal rank in a neighborhood of $M$,
+%%to which the Levi form restriction is nondegenerate.
+
+
+Next Catlin considers the Levi-orthogonal subbundle 
+$$
+	S^{10} := (V^{10})^\perp \subset H^{10}
+$$ 
+($T^{10}_{q+2}$ in Catlin's notation).
+%as the Levi-orthogonal complement of $V^{10}$.
+In particular, the subbundle {\em $S^{10}$ contains all Levi kernels $K^{10}_x$ at all points $x\in M$ near $p$},
+even when $\dim K^{10}_x$ depends on $x$.
+That makes the fiber $(V^{10}_x)^\perp$ unique
+whenever the Levi rank at $x$ is the same as $p$,
+even when $V^{10}_x$ itself may not be unique.
+On the other hand, at points $x$ of higher Levi rank,
+$(V^{10}_x)^\perp$ clearly depends on the choice of $V^{10}_x$.
+
+The rest of Catlin's boundary system construction 
+only depends on the subbundle $S^{10}$ 
+rather than on $V^{10}$ and its chosen basis.
+
+
+
+\subsection{Levi kernel inclusion of higher order for $S^{10}$}
+As mentioned before, $S^{10}$ contains the Levi kernel at every point.
+On the other hand, if $M$ is pseudoconvex,
+we have shown in Lemma~\ref{1-ker-def} 
+that $S^{10}$ is itself 
+{\em contained in the Levi kernel up to order $1$ at $p$}
+as defined in Definition~\ref{ker-1}.
+That permits to use arbitrary sections of $S^{10}$
+in the calculation of the quartic tensor $\t^4$:
+
+\bc\Label{s10-tensor}
+Let $M$ be a pseudoconvex hypersurface,
+$V^{10}\subset H^{10}$
+a maximal Levi-nondegenerate subbundle at $p\in M$,
+and $S^{10}$ the Levi-orthogonal complement of $V^{10}$.
+Then the quartic tensor $\t^4_p$ defined by Lemma~\ref{d2}
+satisfies 
+%\beq\Label{1-levi'}
+$$
+	\la \th_p, \t^4_p(L^4_p, L^3_p, L^2_p, L^1_p)\ra 
+	= -i(L^4 L^3 \la \th, [L^2, L^1]\ra)_p
+$$
+for any $L^4, L^3 \in \C T$, $L^2, \1L^1\in S^{10}$ and $\th\in \Om^0$.
+%\eeq
+\ec
+
+%\br
+%Even if the first two arguments of $\t^4$ are arbitrary tangent directions of $M$,
+%only the restriction  
+%$$
+%	\t^{40}_p \colon \C K_p \times \C K_p \times K^{10}_p \times \1{K^{10}_p}
+%	\to \C Q_p
+%$$
+%is related to the rest of Catlin's boundary system construction.
+%\er
+
+
+
+%we obtain
+%that any section of $S^{10}$ 
+%is automatically 
+
+%Then to have a boundary system in a neighborhood of $p$,
+%it suffices to require that $V^{10}_p$ is a complement of the Levi kernel at $p$, i.e.\
+%$$
+%	H^{10}_p = V^{10}_p  \oplus K^{10}_p.
+%$$
+
+%
+%Given any real hypersurface $M$,
+%its {\em maximal Levi-nondegenerate subbundle}
+%$$V^{10}\subset H^{10}$$ 
+%through a point $p\in M$
+%is any complex subbundle of maximal rank in a neighborhood of $M$,
+%to which the Levi form restriction is nondegenerate.
+%The maximality obviously implies that the bundle rank is equal the Levi form rank at $p$.
+%
+%For every maximal Levi-nondegenerate subbundle $V^{10}$,
+%consider its Levi-orthogonal complement $(V^{10})^\perp$.
+%Then $(V^{10})^\perp$ obviously contains the Levi kernel $K^{10}_x$ for every $x\in M$ near $p$.
+%Thus, even when the $\dim K^{10}_x$ may depend on $x$
+
+
+
+\subsection{Relation with the rest of Catlin's boundary system construction}
+\Label{bs-2}
+The remaining part of Catlin's construction is based on the higher order Levi form derivatives
+\beq\Label{L-th}
+	\6L \th := L^m \ldots L^3 \la \th, [L^2, L^1] \ra,
+	\quad
+	\6L = (L^m, \ldots, L^1),
+\eeq
+where $\th = \d r$ and $r$ is a defining function of $M$.
+Then a boundary system 
+\beq\Label{bd-sys}
+	\6B = \{r_1, r_{q_2+2}, \ldots, r_\nu; L_2, \ldots, L_\nu  \},
+	\quad q_2+2 \le \nu\le n,
+\eeq
+is constructed
+together with associated weights
+$$
+	\a_1 =1 >  \a_2 =\ldots = \a_{q}=2 > \a_{q+1}\ge \ldots \ge \a_{\nu},
+$$
+where $r_1 = r$ is the given defining function,
+$L_j$ and $r_j$ are respectively smooth $(1,0)$ vector fields
+and smooth real functions in a neighborhood of $p$.
+The construction proceeds by induction as follows.
+Assuming a boundary system is constructed for given $\nu$,
+define the next subbundle
+$$
+	T^{10}_{\nu+1} := \{ L\in T^{10}_{q_2+2} : \d r_{q_2+2}(L) =\ldots = \d r_{\nu}(L) =0 \}.
+$$
+Then count all previous $L_j$ and their conjugates with weight $\a_j$,
+and consider a new vector field $L_{\nu+1}\in T^{10}_{\nu+1}$ and its conjugage,
+whose weight $\a=\a_{\nu+1}$ is to be determined.
+Now look for all lists 
+$\6L = (L^m, \ldots, L^1)$ with each $L^k\in \{L_{q+2}, \ldots, L_{\nu+1}\}$,
+which are of total weight $1$ and {\em ordered}, 
+i.e.\ $L_j, \1L_j$ preceed $L_k, \1L_k$ whenever $j>k$,
+such that 
+\beq\Label{non-vanish}
+	(\6L\d \rho)_p\ne 0.
+\eeq
+The list must contain the new vector field $L_{\nu+1}$ or its conjugate,
+and the new weight $\a_{\nu+1}$ is chosen to be minimal possible
+with that property.
+Finally set either
+$$
+	r_{\nu+1}:= \Re L^{m-1}\ldots L^3 \la \th, [L^2, L^1] \ra
+	\text{ or }
+	r_{\nu+1}:= \Im L^{m-1}\ldots L^3 \la \th, [L^2, L^1] \ra	
+$$
+such that 
+$$
+	(L_{\nu+1} r_{\nu+1})_p\ne 0,
+$$
+which is always possible in view of \eqref{non-vanish}, 
+since the first vector field in the list,
+ $L^m$ is either $L_{\nu+1}$ or its conjugate.
+Restating
+Lemma~\ref{1-ker-def} and
+Corollariy~\ref{s10-tensor}, 
+we have:
+
+\bc
+Let $M$ be pseudoconvex hypersurface 
+with Levi form of rank $q$ at $p$.
+Fix a boundary system $\{L_2, \ldots, L_{q+1}\}$ at $p$.
+Then $S^{10}= T^{10}_{q+2} = V^\perp$ for 
+$V:=\span\{L_2, \ldots, L_{q+1}\}$.
+Further, for any vector fields 
+$L^4, L^3\in S^{10} + \1{S^{10}}$, $L^2\in S^{10}$, $L^1\in \1{S^{10}} $,
+we have
+$$
+	L^3 \la \th, [L^2, L^1] \ra_p = 0,
+$$
+$$
+	L^4 L^3 \la \th, [L^2, L^1] \ra_p = \t^{40}_p(L^4_p, L^3_p, L^2_p, L^1_p).
+$$
+In other words, for lists $\6L$ of length $3$, 
+the derivative $(\6L\th)_p$ vanishes,
+whereas for lists of length $4$, 
+it only depends on the vector field values at $p$
+and is given by the restricted quartic tensor $\t_4$
+(regardless of the choice of the boundary system).
+\ec
+
+Thus via the quartic tensor restriction $\t^{40}_p$,
+the nonvanishing condition in \eqref{non-vanish}
+is reduced to a purely algebraic property
+only depending on the vector fields' values at $p$.
+
+
+%In particular, Example~\ref{diff-kernels}
+
+
+%\bp
+%Let $M$ be pseudoconvex hypersurface, and $p$ a point with Levi form of rank $q$.
+%Then \eqref{bd-sys} is a boundary system if and only if
+%for every $\nu+1$, there exists an ordered list 
+%$\6L =(L^4, \ldots, L^1)$
+%$$
+%	\t_4(L^4_p, L^3_p, L^2_p, L^1_p)
+%$$
+%\ep
+
+
+
+
+%\section{Multitype frames}
+%
+
+%\section{Containing stratifications}
+
+%\subsection{Quartic tensor cokernels}
+%
+%\bd
+%Let $V_1, \ldots, V_m$ be complex vector spaces
+%and 
+%$$
+%	\t\colon V_1\times \ldots \times V_m \to \C
+%$$
+%a complex-multilinear map.
+%We define the {\em cokernel of $\t$ in $V_1$} 
+%to be the span in the dual $V_1^*$ of all functionals
+%$$
+%	\psi(v) = \t(v, v_2, \ldots, v_m),
+%	\quad
+%	(v_2,\ldots, v_m) \in V_2\times\ldots \times V_m.
+%$$
+%More generally, define the 
+%{\em cokernel of a multilinear map}
+%$$
+%	\t\colon V_1\times \ldots \times V_m \to W
+%$$
+%is that of the associated map
+%$$
+%	\t\colon V_1\times \ldots \times V_m \times W^*\to \C.
+%$$
+%\ed
+%
+%
+%\bp
+%Let $M$ be a pseudoconvex hypersurface
+%with quartic tensor $\t^4_p$ at $p\in M$,
+%and let
+% $\6E_p\subset \C K_p$ be the dual subspace 
+%generated by $\t^{40}$.
+%\ep
+%
+%
+%\be
+%Let $M$ be the tube quartic
+%$$
+%	\rho:= - 2\Re w + (z+\z)^4 =0.
+%$$
+%Then 
+%$$
+%	\t^{40}_0 = 4! (dz+d\z)\otimes (dz + d\z) \otimes dz \otimes d\z
+%$$
+%\ee
+
+
+
+\begin{thebibliography}{BER96}
+
+\bibitem[BS16]{BS16} 
+S. Biard, E. J. Straube.
+L2-Sobolev theory for the complex Green operator. 
+Notes of four lectures given by the second author at the January 2016 School in Complex Analysis and Geometry at the Tsinghua Sanya International Mathematics Forum, Sanya, China;
+{\sf https://arxiv.org/abs/1606.00728}
+
+\bibitem[C83]{C83}  David Catlin. Necessary conditions for subellipticity of the $\bar\d$-Neumann problem. {\em Ann. of Math.} (2) 117 (1983), no. 1, 147--171.
+
+\bibitem[C84a]{C84a}  David Catlin. Global regularity of the $\bar\d$-Neumann problem. Complex analysis of several variables (Madison, Wis., 1982), 39--49, Proc. Sympos. Pure Math., 41, Amer. Math. Soc., Providence, RI, 1984.
+
+\bibitem[C84b]{C84b}  David Catlin. Boundary invariants of pseudoconvex domains. {\em Ann. of Math. (2)}, {\bf 120}(3):  529--586, 1984.
+
+\bibitem[C87]{C87} David Catlin. Subelliptic estimates for the $\bar\d$-Neumann problem on pseudoconvex domains. {\em Ann. of Math. (2)}, {\bf 126} (1): 131--191, 1987.
+
+\bibitem[D80]{D80}  John P. D'Angelo.
+Subelliptic estimates and failure of semicontinuity for orders of contact. 
+{\em Duke Math. J.} 47 (1980), no. 4, 955--957.
+
+\bibitem[D82]{D82} John P. D'Angelo. Real hypersurfaces, orders of contact, and applications. 
+{\em Ann. of Math. (2)}, {\bf 115} (3): 615--637, 1982.
+
+\bibitem[E]{E-jdg} Ebenfelt. New invariant tensors in CR structures and a normal form for real hypersurfaces at a generic Levi degeneracy. {\em J. Differential Geom.} 50 (1998), no. 2, 207--247. 
+
+\bibitem[K64a]{K64a} J. J. Kohn. Harmonic integrals on strongly pseudo-convex manifolds. I. {\em Ann. of Math.} (2) 78 1963, 112--148.
+
+\bibitem[K64b]{K64b} J. J. Kohn. Harmonic integrals on strongly pseudo-convex manifolds. II. {\em Ann. of Math.} (2) 79 1964, 450--472.
+
+\bibitem[K79]{K79} J. J. Kohn. Subellipticity of the $\bar\d$-Neumann problem on pseudo-convex domains: sufficient conditions. {\em Acta Math.} 142 (1979), no. 1-2, 79--122.
+
+%\bibitem[M02]{M02}
+%J. McNeal. A Sufficient Condition for Compactness of the 
+%$\bar\d$-Neumann Operator.
+%Journal of Functional Analysis 195, 190--205 (2002).
+
+\bibitem[W95]{W} S. M. Webster. The holomorphic contact geometry of a real hypersurface, Modern Methods in Complex Analysis (T. Bloom et al, eds.), Annals of Mathematics Studies 137, Princeton University Press, Princeton, N.J., 1995, pp. 327--342.
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+

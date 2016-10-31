@@ -1,0 +1,27 @@
+\contentsline {section}{\tocsection {}{1}{Introduction}}{2}
+\contentsline {subsection}{\tocsubsection {}{1.1}{Overview and motivation}}{2}
+\contentsline {subsection}{\tocsubsection {}{1.2}{More details on invariant tensors and sheaves}}{3}
+\contentsline {section}{\tocsection {}{2}{Notation and main results}}{4}
+\contentsline {section}{\tocsection {}{3}{Invariant cubic tensors}}{7}
+\contentsline {subsection}{\tocsubsection {}{3.1}{Double Lie brackets}}{7}
+\contentsline {subsection}{\tocsubsection {}{3.2}{The Levi form derivative}}{8}
+\contentsline {subsection}{\tocsubsection {}{3.3}{A normal form of order $3$ and complete set of cubic invariants}}{9}
+\contentsline {subsection}{\tocsubsection {}{3.4}{Symmetric extensions}}{10}
+\contentsline {subsection}{\tocsubsection {}{3.5}{Cubic tensors vanishing for pseudoconvex hypersurfaces}}{11}
+\contentsline {section}{\tocsection {}{4}{Invariant quartic tensors}}{11}
+\contentsline {subsection}{\tocsubsection {}{4.1}{Vector fields that are in the Levi kernel up to order $1$}}{12}
+\contentsline {subsection}{\tocsubsection {}{4.2}{Invariant submodule sheaves of vector fields}}{13}
+\contentsline {subsection}{\tocsubsection {}{4.3}{Construction of the quartic tensor}}{14}
+\contentsline {subsection}{\tocsubsection {}{4.4}{A normal form up to weight $1/4$}}{15}
+\contentsline {subsection}{\tocsubsection {}{4.5}{Symmetric extension}}{16}
+\contentsline {section}{\tocsection {}{5}{Applications and properties of the quartic tensor}}{16}
+\contentsline {subsection}{\tocsubsection {}{5.1}{Relation with the D'Angelo finite type}}{16}
+\contentsline {subsection}{\tocsubsection {}{5.2}{Uniformity of the quartic tensor}}{17}
+\contentsline {subsection}{\tocsubsection {}{5.3}{Kernels of quartic tensors}}{18}
+\contentsline {subsection}{\tocsubsection {}{5.4}{Relation with Catlin's multitype}}{20}
+\contentsline {section}{\tocsection {}{6}{Ideal sheaves for Levi rank level sets}}{21}
+\contentsline {section}{\tocsection {}{7}{Relation with Catlin's boundary systems}}{22}
+\contentsline {subsection}{\tocsubsection {}{7.1}{Maximal Levi-nondegenerate subbundle}}{22}
+\contentsline {subsection}{\tocsubsection {}{7.2}{Levi kernel inclusion of higher order for $S^{10}$}}{23}
+\contentsline {subsection}{\tocsubsection {}{7.3}{Relation with the rest of Catlin's boundary system construction}}{23}
+\contentsline {section}{\tocsection {}{}{References}}{24}
