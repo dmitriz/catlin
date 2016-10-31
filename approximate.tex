@@ -931,6 +931,7 @@ We write $\t^{31}$ for the corresponding tensor,
 reflecting the fact that it will become a restriction 
 of the full tensor $\t^3$ below.
 
+
 \bl\Label{bracket-tensor}
 	The double Lie bracket $[L^3, [L^2, L^1]]$ defines
 	an invariant tensor
@@ -974,6 +975,20 @@ A closely related construction
 was proposed by Webster~\cite{W}.
 
 
+
+\subsection{$\de$-tensoriality}
+
+\bd
+A differential operator $\chi(L^k, \ldots, L^1)$ of order $l$
+ is said to be {\em $\de$-tensorial at $p\in M$}  if 
+$$
+	|\chi(L^k, \ldots,  L^1)_p| \le \de \|j^l_pL^k\| \ldots  \|j^l_pL^1\|
+$$
+holds whenever $L^j_p=0$ for some $j=1,\ldots, k$.
+\ed
+
+
+
 \subsection{The Levi form derivative}
 As alternative to the double Lie bracket tensor, one can 
 differentiate the Levi form after pairing with a contact form,
@@ -990,7 +1005,15 @@ $L^1$, $L^2$ inside the Lie brackets
 have their value at $p$ contained in the Levi kernel}, we do obtain a tensor
 even when the outside vector field $L^3$ is not necessarily contained in $\C H$:
 
+
 \bl\Label{levi-der}
+There exists $C>0$ such that for every $\de\ge0$, the operator
+$$
+	L^3\la \th, [L^2, L^1] \ra
+$$
+is $C\de$-tensorial at $p$
+for $L^2_p, \1L^1_p \in K^{10}_p(\de)$.
+
 There exists an unique cubic tensor
 \beq
 	\t^3_p \colon \C T_p \times  K^{10}_p \times \1{K^{10}_p} \to \C Q_p,

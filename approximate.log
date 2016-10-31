@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.16)  31 OCT 2016 16:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.16)  31 OCT 2016 17:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -153,7 +153,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Here is how much of TeX's memory you used:
  1587 strings out of 493117
  17067 string characters out of 6135433
- 75856 words of memory out of 5000000
+ 75858 words of memory out of 5000000
  4911 multiletter control sequences out of 15000+600000
  16114 words of font info for 60 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -181,7 +181,7 @@ lic/amsfonts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
 c/amsfonts/symbols/msam10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
 ublic/amsfonts/symbols/msbm10.pfb>
-Output written on approximate.pdf (25 pages, 351293 bytes).
+Output written on approximate.pdf (25 pages, 352168 bytes).
 PDF statistics:
  174 PDF objects out of 1000 (max. 8388607)
  123 compressed objects within 2 object streams
