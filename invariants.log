@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.16)  31 OCT 2016 15:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.16)  31 OCT 2016 17:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -174,21 +174,22 @@ fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2014/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/font
 s/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmss10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmss12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsf
-onts/symbols/msam10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/
-amsfonts/symbols/msbm10.pfb>
-Output written on invariants.pdf (24 pages, 347933 bytes).
+e1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmss10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmss12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfont
+s/symbols/msam10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
+fonts/symbols/msbm10.pfb>
+Output written on invariants.pdf (24 pages, 355366 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 120 compressed objects within 2 object streams
+ 174 PDF objects out of 1000 (max. 8388607)
+ 123 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
