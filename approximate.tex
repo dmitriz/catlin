@@ -809,9 +809,12 @@ which, in fact, is the set of points of Levi rank $0$.
 
 \section{Approximate Levi rank}
 \subsection{$\de$-rank of an hermitian form}
-Let $\t\colon V\times \1V\to \C$ be an hermitian form
-on a complex normed space $V$,
-and $\de\ge 0$ be any number.
+Let $(V, h)$ be a complex vector space $V$
+with a fixed hermitian metric $h$.
+We write $\|v\|$ for the associated norm of $v\in V$.
+Consider further a hermitian form
+$\t\colon V\times \1V\to \C$  
+and any $\de\ge 0$.
 For every $v\in V$, consider the associated functional
 $$
 	\t_v=\t(v, \cdot) : \1V \to \C.
@@ -819,18 +822,24 @@ $$
 Then $\t_v=0$ if and only if $v$ is in the kernel $\ker\t$.
 We shall need the following notions quantifying
 kernels and subspaces transversal to them:
+
 \bd
+%	The $\de$-kernel $\ker(\t;\de)$ 
 	A {\em sub-$\de$-space (resp.\ super-$\de$-space)}
 	is any vector subspace $W\subset V$ satisfying
-	$$
+	\beq\Label{tv}
 		\|\t_v\| \le \de \|v\| 
 		\quad
 		(\text{resp. } \|\t_v\| > \de \|v\|),
 		\quad
 		v\in V.
-	$$
+	\eeq
 	The {\em $\de$-rank of $\t$} is the maximal dimension of a
 	super-$\de$-space.
+	
+	More generally, we call the {\em $\de$-kernel of $\t$}
+	and denote by $\ker(\t; \de)$
+	the set (cone) of all $v$ satisfying the first inequality in \eqref{tv}.
 \ed
 
 In other words, $W$ is a sub-$\de$-space if and only if
@@ -853,15 +862,38 @@ a super-$0$-space is any subspace transversal to $\ker\t$,
 and the $0$-rank is the usual rank of $\t$.
 \er
 
+We have the following straightforward properties:
+
+\bl
+Let $\l_j\in \R$ be the eigenvalues of $\t$
+with respect to $h$.
+Then the $\de$-rank of $\t$
+equals the number $q$ of the eigenvalues $\l_j$
+satisfying $|\l_j| > \de$.
+In particular, the $\de$-rank of $\t$ equals 
+the maximal dimension of a vector subspace $W\subset V$ satisfying
+$$
+	|\t(v, \w)| > \de \|v\| \|\w\|, \quad v, w\in W.
+$$
+\el
 
 
 
 
 \subsection{Application to the Levi form}
+Similarly to the (exact) 
+Levi kernel $K^{10}_p$
+we write
+$$
+	K^{10}_p(\de) := \ker(\t^2_p; \de)  \subset H^{10}_p
+$$
+and call it the {\em Levi $\de$-kernel}.
+Note that $K^{10}_p = K^{10}_p(0)$
+but for $\de>0$, $K^{10}_p(\de)$ is not a subspace in general, only a cone.
 
 \bd
 We say that $p\in M$ is of {\em Levi $\de$-rank $q$}
-whenever the Levi form at $p$ has $\de$-rank equal to $q$.
+whenever the Levi form at $p$ has $\de$-rank $q$.
 \ed
 
 
@@ -1007,11 +1039,11 @@ even when the outside vector field $L^3$ is not necessarily contained in $\C H$:
 
 
 \bl\Label{levi-der}
-There exists $C>0$ such that for every $\de\ge0$, the operator
+There exists $c>0$ such that for every $\de\ge0$, the operator
 $$
 	L^3\la \th, [L^2, L^1] \ra
 $$
-is $C\de$-tensorial at $p$
+is $c\de^{1/2}$-tensorial at $p$
 for $L^2_p, \1L^1_p \in K^{10}_p(\de)$.
 
 There exists an unique cubic tensor
@@ -1353,14 +1385,22 @@ This motivates the following definition:
 \bd\Label{ker-1}
 Let $L$ be a $(1,0)$ vector field.
 We say that 
-{\em $L$ is in the Levi kernel up to
+{\em $L$ is in the Levi $\de$-kernel up to
 order $1$ at $p$} if,
+it is in the Levi $\de$-kernel at $p$, and if
 for any vector fields $L^1\in H^{10}$, $L^2\in \C T$,
 and any contact form $\th$, the following holds:
 \beq\Label{1-ker}
-	(\la \th, [L^1, \1L]\ra )_p
-	= (L^2 \la \th, [L^1, \1L] \ra)_p 
-	= 0.
+%	| (\la \th, [L^1, \1L]\ra )_p | \le
+%	\de
+%	\| L^1_p\| \| \1L_p\| \|\th_p\|,
+%	\quad
+	|(L^2 \la \th, [L^1, \1L] \ra)_p | \le 
+	\de
+	\| L^2_p \|
+	\| j^1_p L^1\|
+	\| j^1_p \1L\|
+	\| j^1_p\th\| 
 \eeq
 
 More generally, 
@@ -1396,8 +1436,8 @@ $$
 $$
 only depends on the values $L^2_p, L^1_p$ and $\th_p$,
 as well as the $1$-jet of $L$ at $p$.
-In particular,  $L$ being in the Levi kernel up to order $1$
-is a linear condition on the $1$-jet of $L$ at $p$.
+%In particular,  $L$ being in the Levi kernel up to order $1$
+%is a linear condition on the $1$-jet of $L$ at $p$.
 %for which the corresponding tensor vanishes.
 \el
 
@@ -1436,18 +1476,19 @@ provides an easy way of constructing them.
 
 
 \bl\Label{1-ker-def}
-Let $M$ be have Levi form of rank $r$ at $p\in M$,
-with Levi kernel $K^{10}_p$.
-Assume that $L$ is in the Levi kernel
+Let $M$ have Levi $\de$-rank $q$ at $p\in M$,
+with Levi $\e$-kernel $K^{10}_p(\e)$.
+Assume that $L\in H^{10}$ is in the Levi $\e$-kernel
 up to order $1$ at $p$,
 as per Definition~\ref{ker-1}.
-Then $L_p\in K^{10}_p$ and
+Then $L_p\in K^{10}_p(\e)$ and
 \beq\Label{3-vanish}
-	\t^3_p(L^2_p, L^1_p, \1L_p) 
+	| \t^3_p(L^2_p, L^1_p, \1L_p) | 
+	\le \e \|L^2_p\| \|L^1_p\| \|\1L_p\| ,
 	%= \2\t(\1L^2_p, L^1_p, \1L_p) 
-	= 0, 
-	\quad L^2, L^1\in H^{10}, 
-	\quad L^1_p\in K^{10}_p.
+	\quad L^2 \in \C T, \, 
+	L^1\in H^{10}, \,
+	L^1_p\in K^{10}_p(\e).
 \eeq
 must hold for all $L^2$, $L^1$.
 (Equivalently, $\1L_p$ is contained in the kernel of $\t^3_p$ in the last argument).
